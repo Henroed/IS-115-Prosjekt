@@ -1,12 +1,10 @@
-/**
- * Tabs
- */
+
 .tabs {
 	display: flex;
-	flex-wrap: wrap; // make sure it wraps
+	flex-wrap: wrap; 
 }
 .tabs label {
-	order: 1; // Put the labels first
+	order: 1; 
 	display: block;
 	padding: 1rem 2rem;
 	margin-right: 0.2rem;
@@ -16,7 +14,7 @@
   transition: background ease 0.2s;
 }
 .tabs .tab {
-  order: 99; // Put the tabs last
+  order: 99; 
   flex-grow: 1;
 	width: 100%;
 	display: none;
