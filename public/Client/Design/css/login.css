@@ -72,17 +72,7 @@ form .row input::placeholder{
   align-items: center;
   justify-content: center;
 }
-.wrapper form .pass{
-  margin: -8px 0 20px 0;
-}
-.wrapper form .pass a{
-  color: rgba(26,188,156,0.25);
-  font-size: 17px;
-  text-decoration: none;
-}
-.wrapper form .pass a:hover{
-  text-decoration: underline;
-}
+
 .wrapper form .button input{
   color: #fff;
   font-size: 20px;
@@ -95,15 +85,15 @@ form .row input::placeholder{
 form .button input:hover{
   background: #666699;
 }
-.wrapper form .signup-link{
+.wrapper form .signup-link, .wrapper form .pass{
   text-align: center;
-  margin-top: 20px;
+  margin: 20px;
   font-size: 17px;
 }
-.wrapper form .signup-link a{
+.wrapper form .signup-link a, .wrapper form .pass a{
   color: #16a085;
   text-decoration: none;
 }
-form .signup-link a:hover{
+form .signup-link a:hover, .wrapper form .pass a:hover{
   text-decoration: underline;
 }
