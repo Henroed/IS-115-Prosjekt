@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/is115/design2/site/css/main.css">
+<link rel="stylesheet" href="..\Client\Design\css\main.css">
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Tab One</label>
