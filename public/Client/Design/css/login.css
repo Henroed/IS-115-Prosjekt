@@ -76,7 +76,7 @@ form .row input::placeholder{
   margin: -8px 0 20px 0;
 }
 .wrapper form .pass a{
-  color: #90CAF9;
+  color: rgba(26,188,156,0.25);
   font-size: 17px;
   text-decoration: none;
 }
@@ -93,7 +93,7 @@ form .row input::placeholder{
   cursor: pointer;
 }
 form .button input:hover{
-  background: #12876f;
+  background: #666699;
 }
 .wrapper form .signup-link{
   text-align: center;
