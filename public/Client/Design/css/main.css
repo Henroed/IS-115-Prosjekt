@@ -1,10 +1,17 @@
 
 .tabs {
 	display: flex;
+<<<<<<< HEAD
 	flex-wrap: wrap; 
 }
 .tabs label {
 	order: 1; 
+=======
+	flex-wrap: wrap;
+}
+.tabs label {
+	order: 1;
+>>>>>>> 93f3afab6109bd6669fdfe4fb74390469ad2ad30
 	display: block;
 	padding: 1rem 2rem;
 	margin-right: 0.2rem;
@@ -14,7 +21,11 @@
   transition: background ease 0.2s;
 }
 .tabs .tab {
+<<<<<<< HEAD
   order: 99; 
+=======
+  order: 99;
+>>>>>>> 93f3afab6109bd6669fdfe4fb74390469ad2ad30
   flex-grow: 1;
 	width: 100%;
 	display: none;

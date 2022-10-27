@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <link rel="stylesheet" href="../Client/Design/css/main.css">
+=======
+<link rel="stylesheet" href="..\Client\Design\css\main.css">
+>>>>>>> 93f3afab6109bd6669fdfe4fb74390469ad2ad30
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Tab One</label>
