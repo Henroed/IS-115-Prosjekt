@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="public/Client/Design/css/main.css">
+<link rel="stylesheet" href="../Design/css/login./register.css">
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Tab One</label>
@@ -21,4 +21,11 @@
     <h2>Tab Three Content</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
   </div>
+  <?php
+      $i = 0;
+      while($i < 5) {
+        include '../../PHP/inc/event.php';
+      $i = $i + 1;
+      }
+    ?>
 </div>
