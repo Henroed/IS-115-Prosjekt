@@ -26,7 +26,7 @@
           </div>
           <div class="row">
             <i class="fas fa-bilde">
-              <img src="../Design/img/Capture.PNG" width="auto" height="auto"></i>
+              <img src="../Design/img/Capture.PNG" style="width:200; height:200;"></i>
             
             <?php 
                 //your PHP code goes here
