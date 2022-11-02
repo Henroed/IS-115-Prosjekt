@@ -5,6 +5,12 @@
   box-sizing: border-box;
   font-family: 'Poppins',sans-serif;
 }
+
+.image {
+  flex-basis: 70%;
+  order: 2;
+}
+
 body{
   height: 100vh;
   display: flex;
@@ -20,6 +26,10 @@ body{
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px
 }
 .container .title{
   font-size: 25px;
@@ -51,6 +61,7 @@ form .input-box span.details{
   font-weight: 500;
   margin-bottom: 5px;
 }
+
 .user-details .input-box input{
   height: 45px;
   width: 100%;
