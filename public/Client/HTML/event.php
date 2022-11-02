@@ -25,9 +25,10 @@
             ?>
           </div>
           <div class="row">
-            <i class="fas fa-bilde"></i>
-            <img scr="..\Design\img\Capture.PNG" width="auto" height="auto">
-            <?php
+            <i class="fas fa-bilde">
+              <img src="../Design/img/Capture.PNG" width="auto" height="auto"></i>
+            
+            <?php 
                 //your PHP code goes here
 
             ?>
