@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../Design/css/login./register.css">
+<link rel="stylesheet" href="../Design/css/main.css">
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Tab One</label>
