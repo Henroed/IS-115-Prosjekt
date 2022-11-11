@@ -8,6 +8,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
+<?php include 'inc/header.html' ?>
   <div class="container">
     <div class="title">Min profil</div>
     <div class="content">
@@ -72,6 +73,6 @@
       </form>
     </div>
 </div>
-
+<?php include "inc/footer.html" ?>
 </body>
 </html>
