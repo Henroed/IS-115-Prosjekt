@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
+
     <!---<title> Responsive Registration Form | CodingLab </title>--->
     <link rel="stylesheet" href="../Design/css/registrer.css">
 <?php include 'inc/header.html' ?>

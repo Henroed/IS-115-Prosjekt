@@ -4,16 +4,21 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  
 } 
 nav{
   display: flex;
   height: 80px;
   width: 100%;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background:  #9b59b6;
   align-items: center;
   justify-content: space-between;
   padding: 0 50px 0 100px;
   flex-wrap: wrap;
+  position:fixed;
+  top: 0;
+  left: 0;
+  
 }
 nav .logo{
   color: #fff;
@@ -38,7 +43,6 @@ nav ul li a{
   letter-spacing: 1px;
   transition: all 0.3s ease;
 }
-nav ul li a.active,
 nav ul li a:hover{
   color: #111;
   background: #fff;
@@ -60,9 +64,6 @@ input[type="checkbox"]{
 @media (max-width: 920px) {
   nav .menu-btn i{
     display: block;
-  }
-  #click:checked ~ .menu-btn i:before{
-    content: "\f00d";
   }
   nav ul{
     position: fixed;
@@ -92,24 +93,9 @@ input[type="checkbox"]{
   #click:checked ~ ul li a{
     margin-left: 0px;
   }
-  nav ul li a.active,
   nav ul li a:hover{
     background: none;
     color: cyan;
   }
 }
-.content{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: -1;
-  width: 100%;
-  padding: 0 30px;
-  color: #1b1b1b;
-}
-.content div{
-  font-size: 40px;
-  font-weight: 700;
-}
+
