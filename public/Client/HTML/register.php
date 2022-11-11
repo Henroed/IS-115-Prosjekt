@@ -11,35 +11,35 @@
   <div class="container">
     <div class="title">Registrer</div>
     <div class="content">
-      <form action="register" method="POST">
+      <form action="register.php" method="POST">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Fornavn</span>
-            <input type="text" name="fornavn" placeholder="Chris" required>
+            <input type="text" name="fornavn" value="Chris" required>
           </div>
           <div class="input-box">
             <span class="details">Etternavn</span>
-            <input type="text" name="etternavn" placeholder="Martin">
+            <input type="text" name="etternavn" value="Martin">
           </div>
           <div class="input-box">
             <span class="details">Epost</span>
-            <input type="text" name="epost" placeholder="@mail.com" required>
+            <input type="text" name="epost" value="Chris@mail.com" required>
           </div>
           <div class="input-box">
             <span class="details">Tlf nummer</span>
-            <input type="text" name="tlf" placeholder="+47 123 45 678" required>
+            <input type="text" name="tlf" value="12345678" required>
           </div>
           <div class="input-box">
             <span class="details">By</span>
-            <input type="text" name="city" placeholder="Kristiansand" required>
+            <input type="text" name="city" value="Kristiansand" required>
           </div>
           <div class="input-box">
             <span class="details">Zip-kode</span>
-            <input type="text" name="zip" placeholder="46xx" required>
+            <input type="text" name="zip" value="4623" required>
           </div>
           <div class="input-box">
             <span class="details">Passord</span>
-            <input type="text" name="passord" placeholder="Skriv inn passord" required>
+            <input type="text" name="passord" value="dsaoass" placeholder="Skriv inn passord" required>
           </div>
           <div class="input-box">
             <span class="details">Bekreft passord</span>
@@ -68,26 +68,22 @@
         </div>
         <div class="button">
           <input type="submit" value="Register">
-          <div class="login">Allerede medlem? <a href="login.html">Logg inn her</a></div>
+          <div class="login">Allerede medlem? <a href="login.php">Logg inn her</a></div>
         </div>
       </form>
 
       <?php 
-        $fornavn = "bob";
-        $etternavn = "bob";
-        $epost = "bob@bob.com";
-        $tlf = 12345678;
-        $city = "simcity";
-        $zip = 1234;
-        $passord = "dsaoass";
 
-          $sql = "INSERT INTO users 
+        if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {
+        require_once('../../../private/Database/inc/db_connect.php');
+
+        $sql = "INSERT INTO user
         (fornavn, etternavn, tlf, epost, city, zip, passord) 
         VALUES 
-        (:fornavn, :etternavn, :epost, :tlf, :city, :zip, :passord)";  
+        (:fornavn, :etternavn, :tlf, :epost, :city, :zip, :passord)";  
         
         $q = $pdo->prepare($sql);
-
+    
         $q->bindParam(':fornavn', $fornavn, PDO::PARAM_STR);
         $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
         $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
@@ -95,11 +91,31 @@
         $q->bindParam(':city', $city, PDO::PARAM_INT);
         $q->bindParam(':zip', $zip, PDO::PARAM_STR);
         $q->bindParam(':passord', $passord, PDO::PARAM_STR);
-
+    
+        $fornavn = $_POST["fornavn"];
+        $etternavn = $_POST["etternavn"];
+        $epost = $_POST["epost"];
+        $tlf = $_POST["tlf"];
+        $city = $_POST["city"];
+        $zip = $_POST["zip"];
+        $passord = $_POST["passord"];
+    
+    try {
         $q->execute();
-  
+        header("Location: login.html"); /* Redirect browser */
+    exit();
+    } catch (PDOException $e) {
+        echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
+    }
+    //$q->debugDumpParams();
+    
+    if($pdo->lastInsertId() > 0) {
+        echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
+    } else {
+        echo "Data were not inserted into database.";
+    }
 
-
+    }
       ?>
     </div>
   </div>
