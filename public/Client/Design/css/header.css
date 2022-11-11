@@ -62,7 +62,7 @@ input[type="checkbox"]{
     display: block;
   }
   #click:checked ~ .menu-btn i:before{
-    content: "\f00d";
+    
   }
   nav ul{
     position: fixed;
