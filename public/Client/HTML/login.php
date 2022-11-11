@@ -45,6 +45,7 @@
             } else {
               echo "Your username or password is incorrect!";
             }
+            $conn->close();
           }
         ?>
       </div>

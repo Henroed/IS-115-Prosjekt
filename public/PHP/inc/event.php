@@ -1,22 +1,30 @@
+<?php 
+
+$sql = "SELECT eventNavn, dato, beskrivelse FROM event WHERE eventID = $i";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    ?>
 <form action="#">
   <div class="container">
     <div class="wrapper">
-      <div class="title"><span>Snikk Snakk og Pølsevev
+      <div class="title"><span>
         <?php
-          //your PHP code goes here
+          echo $row["eventNavn"]
         ?></span></div>
       <div class="row">
        <i class="fas fa-info"></i>
-         Info om Snikk Snakk.
+         Info om Snikk Snakk.<br>
         <?php
-          //your PHP code goes here
-        ?>
+          echo $row["beskrivelse"]
+        ?><br>
       </div>
        <div class="row">
          <i class="fas fa-dato"></i>
-            Dato ting tang.
           <?php
-            //your PHP code goes here
+            echo $row["dato"]
           ?>
        </div>
           <div class="row">
@@ -32,3 +40,7 @@
     </div>
   </div>
 </form>
+<?php   
+}
+}
+?>
