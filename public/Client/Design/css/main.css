@@ -47,7 +47,7 @@
  * Generic Styling
 */
 body {
-  background: #666699;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
   min-height: 100vh;
 	box-sizing: border-box;
 	padding-top: 10vh;
