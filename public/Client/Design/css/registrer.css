@@ -6,17 +6,13 @@
   font-family: 'Poppins',sans-serif;
 }
 
-.image {
-  flex-basis: 70%;
-  order: 2;
-}
-
 body{
-  height: 100vh;
+  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin-top: 80px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 .container{
