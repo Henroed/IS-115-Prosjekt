@@ -1,5 +1,4 @@
 
-    <!---<title> Responsive Registration Form | CodingLab </title>--->
     <link rel="stylesheet" href="../Design/css/registrer.css">
 <?php include 'inc/header.html' ?>
   <div class="container">

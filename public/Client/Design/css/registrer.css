@@ -1,9 +1,13 @@
+/* Brukes av: profile.php, aboutUs.php, forgotPassword.html, registrer.php */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins',sans-serif;
+  
 }
 
 body{
@@ -11,10 +15,16 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  position: relative;
+  padding: 10px 10px 15% 10px; 
   margin-top: 80px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightblue), to(purple));
+  background: -webkit-linear-gradient(top, lightblue, purple);
+  background: -moz-linear-gradient(top, lightblue, purple);
+  background: -ms-linear-gradient(top, lightblue, purple);
+  background: -o-linear-gradient(top, lightblue, purple);
+  background: linear-gradient(top, lightblue, purple);}
+  
 .container{
   max-width: 700px;
   width: 100%;
@@ -40,7 +50,6 @@ body{
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 .content form .user-details{
   display: flex;

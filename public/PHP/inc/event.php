@@ -40,7 +40,6 @@ if ($result->num_rows > 0) {
     </div>
   </div>
 </form>
-<?php   
-}
-}
-?>
+<?php include "inc/footer.html" ?>
+</body>
+</html>

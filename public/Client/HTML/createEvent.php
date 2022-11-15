@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
+<link rel="stylesheet" href="../Design/css/main.css">
   <head>
     <meta charset="UTF-8">
-    <!---<title> Responsive Registration Form | CodingLab </title>--->
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <?php include 'inc/header.html' ?>
   <div class="container">
