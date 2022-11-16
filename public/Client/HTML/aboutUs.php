@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php session_start(); ?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
