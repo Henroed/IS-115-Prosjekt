@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <link rel="stylesheet" href="../Design/css/main.css">
-<?php include 'inc/header.html'; ?>
+<?php include 'inc/header.php'; ?>
   <?php
       if(!isset($_SESSION['loginVerdi'])) // If session is not set then redirect to Login Page
       {
@@ -9,8 +9,9 @@
       
       $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
       $i = 0;
-      
+
       while($i <= 100) {
+        $sql = "SELECT eventID, eventNavn, dato, beskrivelse FROM event WHERE eventID = $i";
         include '../../PHP/inc/event.php';
       $i = $i + 1;
       }
