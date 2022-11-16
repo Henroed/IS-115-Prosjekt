@@ -10,10 +10,18 @@
        $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
        $i = 0;
        
-       while($i <= 100) {
+       $profileValue = $_SESSION['loginVerdi'];
+       $userQuery = "SELECT userID FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";
+
+       $userValue = $conn->query($userQuery);
+
+       $userID = $userValue->fetch_assoc();
+       $selectValue = $userID["userID"];
+
+        $sql = "SELECT event.eventID, event.eventNavn, event.dato, event.beskrivelse FROM event 
+                LEFT JOIN myEvent ON event.eventID=myEvent.eventID WHERE myEvent.userID = '$selectValue'";
          include '../../PHP/inc/event.php';
-       $i = $i + 1;
-       }
+
        $conn->close();
      ?>
 <?php include "inc/footer.html"; ?>
