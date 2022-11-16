@@ -25,7 +25,7 @@ footer .content p,a{
   color: #fff;
 }
 footer .content .box{
-  width: 33%;
+  width: 100%;
   transition: all 0.4s ease;
 }
 footer .content .topic{
@@ -38,18 +38,7 @@ footer .content .topic{
 footer .content p{
   text-align: justify;
 }
-footer .content .lower .topic{
-  margin: 24px 0 5px 0;
-}
-footer .content .lower i{
-  padding-right: 16px;
-}
-footer .content .middle{
-  padding-left: 80px;
-}
-footer .content .middle a{
-  line-height: 32px;
-}
+
 
 footer .bottom{
   width: 100%;

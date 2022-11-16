@@ -1,4 +1,4 @@
-
+/* Brukes av: myEvents.php, createEvent.php, homepage.php */
 .tabs {
 	display: flex;
 	flex-wrap: wrap;
@@ -47,17 +47,21 @@
  * Generic Styling
 */
 body {
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
   min-height: 100vh;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightblue), to(purple));
+  background: -webkit-linear-gradient(top, lightblue, purple);
+  background: -moz-linear-gradient(top, lightblue, purple);
+  background: -ms-linear-gradient(top, lightblue, purple);
+  background: -o-linear-gradient(top, lightblue, purple);
+  background: linear-gradient(top, lightblue, purple);
 	box-sizing: border-box;
 	padding-top: 10vh;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
+  position: relative;
   line-height: 1.5;
   max-width: 60rem;
-  margin: 0 auto;
+  margin: 10px;
   font-size: 100%;
-  margin-top: 80px;
-
 }
 

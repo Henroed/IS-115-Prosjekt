@@ -4,8 +4,9 @@
 <?php include 'inc/header.html'; ?>
 <?php 
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
+    $profileValue = $_SESSION['loginVerdi'];
 
-    $sql = "SELECT fornavn, etternavn, epost, tlf, city, zip, kjønn FROM user WHERE userID = 18";
+    $sql = "SELECT fornavn, etternavn, epost, tlf, city, zip, kjønn FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
