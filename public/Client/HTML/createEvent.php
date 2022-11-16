@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <?php include 'inc/header.html'; ?>
+     <?php include 'inc/header.php'; ?>
   <div class="container">
     <div class="content">
       <form action="createEvent.php" method="POST">

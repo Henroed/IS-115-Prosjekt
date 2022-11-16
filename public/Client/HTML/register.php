@@ -106,7 +106,7 @@
     
     try {
         $q->execute();
-        header("Location: login.html"); /* Redirect browser */
+        header("Location: login.php"); /* Redirect browser */
     exit();
     } catch (PDOException $e) {
         echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production

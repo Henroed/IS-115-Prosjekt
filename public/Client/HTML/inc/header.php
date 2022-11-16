@@ -15,7 +15,7 @@
         <li><a href="createEvent.php">Create Event</a></li>
         <li><a href="profile.php">My Profile</a></li>
         <li><a href="aboutUs.php">About Us</a></li>
+        <a href="logout.php">Logout</a>
       </ul>
     </nav>
-
   

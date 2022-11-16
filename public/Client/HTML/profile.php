@@ -1,7 +1,7 @@
 <?php session_start(); ?>
     <!---<title> Responsive Registration Form | CodingLab </title>--->
 <link rel="stylesheet" href="../Design/css/registrer.css">
-<?php include 'inc/header.html'; ?>
+<?php include 'inc/header.php'; ?>
 <?php 
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
     $profileValue = $_SESSION['loginVerdi'];

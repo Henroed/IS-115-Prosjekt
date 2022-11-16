@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <link rel="stylesheet" href="../Design/css/main.css">
-<?php include 'inc/header.html'; ?>
+<?php include 'inc/header.php'; ?>
   <?php
       if(!isset($_SESSION['loginVerdi'])) // If session is not set then redirect to Login Page
       {
