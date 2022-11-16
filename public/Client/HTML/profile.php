@@ -37,7 +37,7 @@
             <span class="details"><?php echo $row["kjønn"] ?></span>
           </div>
         <div class="button">
-          <input type="submit" value="Lagre endret informasjon">
+          <input type="submit" value="Endre informasjon">
         </div>
       </form>
     </div>

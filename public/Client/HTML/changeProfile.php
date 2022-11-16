@@ -66,59 +66,40 @@
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Register">
-          <div class="login">Allerede medlem? <a href="login.php">Logg inn her</a></div>
+          <input type="submit" value="Lagre endret innformasjon">
         </div>
       </form>
 
-      <?php 
-        if(isset($_SESSION['loginVerdi'])) {
-          header("Location:homepage.php"); 
-            }
+      <?php
 
-        if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {
-        require_once('../../../private/Database/inc/db_connect.php');
+$userID = $_POST["userID"];
+$fornavn = $_POST["fornavn"];
+$etternavn = $_POST["etternavn"];
+$epost = $_POST["epost"];
+$kjønn = $_POST["kjønn"];
 
-        $sql = "INSERT INTO user
-        (fornavn, etternavn, tlf, epost, city, zip, passord) 
-        VALUES 
-        (:fornavn, :etternavn, :tlf, :epost, :city, :zip, :passord)";  
-        
-        $q = $pdo->prepare($sql);
-    
-        $q->bindParam(':fornavn', $fornavn, PDO::PARAM_STR);
-        $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
-        $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
-        $q->bindParam(':epost', $epost, PDO::PARAM_STR);
-        $q->bindParam(':city', $city, PDO::PARAM_INT);
-        $q->bindParam(':zip', $zip, PDO::PARAM_STR);
-        $q->bindParam(':passord', $passord, PDO::PARAM_STR);
-    
-        $fornavn = $_POST["fornavn"];
-        $etternavn = $_POST["etternavn"];
-        $epost = $_POST["epost"];
-        $tlf = $_POST["tlf"];
-        $city = $_POST["city"];
-        $zip = $_POST["zip"];
-        $passord = $_POST["passord"];
-    
-    try {
-        $q->execute();
-        header("Location: login.html"); /* Redirect browser */
-    exit();
-    } catch (PDOException $e) {
-        echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
-    }
-    //$q->debugDumpParams();
-    
-    if($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
-    } else {
-        echo "Data were not inserted into database.";
-    }
+$servername = "localhost";
+$username = "bob";
+$password = "123456";
+$db = "classDB";
 
-    }
-      ?>
+$conn = new mysqli($servername, $username, $password, $db);
+
+if ($conn->connect_error){
+	die("Connection failed: ". $conn->connect_error);
+}
+
+$sql = "update students set name='$name', age='$age', gender='$gender' where student_id='$student_id'";
+
+if ($conn->query($sql) === TRUE) {
+	echo "Records updated: ".$student_id."-".$name."-".$age."-".$gender;
+} else {
+	echo "Error: ".$sql."<br>".$conn->error;
+}
+
+$conn->close();
+
+?>
     </div>
   </div>
 

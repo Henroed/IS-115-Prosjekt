@@ -16,14 +16,10 @@ body{
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 10px 10px 15% 10px; 
+  padding: 10px;
   margin-top: 80px;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(lightblue), to(purple));
-  background: -webkit-linear-gradient(top, lightblue, purple);
-  background: -moz-linear-gradient(top, lightblue, purple);
-  background: -ms-linear-gradient(top, lightblue, purple);
-  background: -o-linear-gradient(top, lightblue, purple);
-  background: linear-gradient(top, lightblue, purple);}
+  background-color: lightblue;
+}
   
 .container{
   max-width: 700px;
