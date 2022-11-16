@@ -1,6 +1,4 @@
-<?php 
-  session_start(); 
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -31,6 +29,11 @@
           <div class="signup-link">Ikke et medlem? <a href="register.php">Registrer deg</a></div>
         </form>
         <?php 
+
+          if(isset($_SESSION['loginVerdi'])) {
+              header("Location:homepage.php"); 
+                }
+
           if (isset($_POST["loginVerdi"]) && isset($_POST["passord"])) {
 
             $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
@@ -42,16 +45,14 @@
             $result = mysqli_query($conn, $sql);
         
             if ($row = mysqli_fetch_assoc($result)) {
-             $_SESSION[$loginVerdi] = $userID;
+             $_SESSION['loginVerdi'] = $loginVerdi;
              header("Location: homepage.php"); /* Redirect browser */
         
             } else {
               echo "Your username or password is incorrect!";
             }
             $conn->close();
-          } elseif ($_SESSION[$loginVerdi] = $user_id) {
-              header("Location: homepage.php");
-            }
+          }
         ?>
       </div>
     </div>

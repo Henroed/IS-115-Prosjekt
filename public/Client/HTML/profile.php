@@ -1,7 +1,7 @@
-
+<?php session_start(); ?>
     <!---<title> Responsive Registration Form | CodingLab </title>--->
-    <link rel="stylesheet" href="../Design/css/registrer.css">
-<?php include 'inc/header.html' ?>
+<link rel="stylesheet" href="../Design/css/registrer.css">
+<?php include 'inc/header.html'; ?>
 <?php 
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
 
@@ -46,6 +46,11 @@
   }
   $conn->close();
 ?>
-<?php include "inc/footer.html" ?>
+<?php include "inc/footer.html";
+      if(!isset($_SESSION['loginVerdi'])) // If session is not set then redirect to Login Page
+      {
+          header("Location:login.php");  
+      }
+?>
 </body>
 </html>

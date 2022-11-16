@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -73,6 +74,9 @@
       </form>
 
       <?php 
+        if(isset($_SESSION['loginVerdi'])) {
+          header("Location:homepage.php"); 
+            }
 
         if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {
         require_once('../../../private/Database/inc/db_connect.php');

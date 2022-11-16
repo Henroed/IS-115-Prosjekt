@@ -1,5 +1,11 @@
-<?php include 'inc/header.html' ?>
+<?php session_start(); ?>
+<?php include 'inc/header.html'; ?>
 <?php
+      if(!isset($_SESSION['loginVerdi'])) // If session is not set then redirect to Login Page
+      {
+          header("Location:login.php");  
+      }
+      
        $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
        $i = 0;
        
@@ -9,4 +15,4 @@
        }
        $conn->close();
      ?>
-<?php include "inc/footer.html" ?>
+<?php include "inc/footer.html"; ?>

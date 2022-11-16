@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <!---<title> Responsive Registration Form | CodingLab </title>--->
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <?php include 'inc/header.html' ?>
+     <?php include 'inc/header.html'; ?>
   <div class="container">
     <div class="content">
       <form action="createEvent.php" method="POST">
@@ -69,6 +70,11 @@
       ?>
     </div>
   </div>
-  <?php include "inc/footer.html" ?>
+  <?php include "inc/footer.html";
+        if(!isset($_SESSION['loginVerdi'])) // If session is not set then redirect to Login Page
+        {
+            header("Location:login.php");  
+        }
+  ?>
 </body>
 </html>
