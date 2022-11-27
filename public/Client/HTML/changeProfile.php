@@ -1,5 +1,7 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
+<?php session_start(); 
+    $conn = mysqli_connect("localhost", "root", "", "eventdatabase"); 
+    ?> 
+    <!DOCTYPE html>
 <html lang="no" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -10,35 +12,35 @@
   <div class="container">
     <div class="title">Registrer</div>
     <div class="content">
-      <form action="register.php" method="POST">
+      <form action="" method="POST">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Fornavn</span>
-            <input type="text" name="fornavn" value="Chris" required>
+            <input type="text" name="Fornavn" value="Chris" required>
           </div>
           <div class="input-box">
             <span class="details">Etternavn</span>
-            <input type="text" name="etternavn" value="Martin">
+            <input type="text" name="Etternavn" value="Martin">
           </div>
           <div class="input-box">
             <span class="details">Epost</span>
-            <input type="text" name="epost" value="Chris@mail.com" required>
+            <input type="text" name="Epost" value="Chris@mail.com" required>
           </div>
           <div class="input-box">
             <span class="details">Tlf nummer</span>
-            <input type="text" name="tlf" value="12345678" required>
+            <input type="text" name="Tlf" value="12345678" required>
           </div>
           <div class="input-box">
             <span class="details">By</span>
-            <input type="text" name="city" value="Kristiansand" required>
+            <input type="text" name="City" value="Kristiansand" required>
           </div>
           <div class="input-box">
             <span class="details">Zip-kode</span>
-            <input type="text" name="zip" value="4623" required>
+            <input type="text" name="Zip" value="4623" required>
           </div>
           <div class="input-box">
             <span class="details">Passord</span>
-            <input type="text" name="passord" value="dsaoass" placeholder="Skriv inn passord" required>
+            <input type="text" name="Passord" value="dsaoass" placeholder="Skriv inn passord" required>
           </div>
           <div class="input-box">
             <span class="details">Bekreft passord</span>
@@ -66,7 +68,7 @@
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Lagre endret innformasjon">
+          <input type="submit" value="Lagre endret innformasjon"></input>
         </div>
       </form>
 
@@ -74,42 +76,46 @@
 
 if(isset($_POST['Lagre endret innformasjon'])){
 
+    require_once('../../../private/Database/inc/db_connect.php'); 
+
     $q = $pdo->prepare($sql);
     
-    $q->bindParam(':fornavn', $fornavn, PDO::PARAM_STR);
-    $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
-    $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
-    $q->bindParam(':epost', $epost, PDO::PARAM_STR);
-    $q->bindParam(':city', $city, PDO::PARAM_INT);
-    $q->bindParam(':zip', $zip, PDO::PARAM_STR);
-    $q->bindParam(':passord', $passord, PDO::PARAM_STR);
+    $q->bindParam(':Fornavn', $fornavn, PDO::PARAM_STR);
+    $q->bindParam(':Etternavn', $etternavn, PDO::PARAM_STR);
+    $q->bindParam(':Tlf', $tlf, PDO::PARAM_INT);
+    $q->bindParam(':Epost', $epost, PDO::PARAM_STR);
+    $q->bindParam(':City', $city, PDO::PARAM_STR);
+    $q->bindParam(':Zip', $zip, PDO::PARAM_INT);
+    $q->bindParam(':Passord', $passord, PDO::PARAM_STR);
 
-    $fornavn = $_POST["fornavn"];
-    $etternavn = $_POST["etternavn"];
-    $epost = $_POST["epost"];
-    $tlf = $_POST["tlf"];
-    $city = $_POST["city"];
-    $zip = $_POST["zip"];
-    $passord = $_POST["passord"];
+    $fornavn = $_POST["Fornavn"];
+    $Etternavn = $_POST["Etternavn"];
+    $epost = $_POST["Epost"];
+    $tlf = $_POST["Tlf"];
+    $city = $_POST["City"];
+    $zip = $_POST["Zip"];
+    $passord = $_POST["Passord"];
     
-    $sql = "UPDATE students set fornavn='$fornavn', etternavn='$etternavn', tlf='$tlf',epost='$epost', gender='$gender' WHERE student_id='$student_id'";
+    $sql = "UPDATE user set Fornavn='$fornavn', Etternavn='$etternavn', Tlf='$tlf', Epost='$epost' WHERE userID='$student_id'";
 
     try {
         $q->execute();
-        header("Location: profile.php"); /* Redirect browser */
-    exit();
     } catch (PDOException $e) {
         echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
     }
+
     //$q->debugDumpParams();
-    
-    if($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
+      
+    if($q->rowCount() > 0) {
+        echo $q->rowCount() . " record" . ($q->rowCount() != 1 ? "s were " : " was ") . "updated.";
+    } elseif($q->rowCount() == 0) {
+        echo "The record was not updated (no change).";
     } else {
-        echo "Data were not inserted into database.";
+        echo "The record was not updated.";
     }
 
     }
+    $conn->close();
 
 ?>
     </div>
