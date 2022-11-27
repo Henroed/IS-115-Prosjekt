@@ -72,32 +72,44 @@
 
       <?php
 
-$userID = $_POST["userID"];
-$fornavn = $_POST["fornavn"];
-$etternavn = $_POST["etternavn"];
-$epost = $_POST["epost"];
-$kjønn = $_POST["kjønn"];
+if(isset($_POST['Lagre endret innformasjon'])){
 
-$servername = "localhost";
-$username = "bob";
-$password = "123456";
-$db = "classDB";
+    $q = $pdo->prepare($sql);
+    
+    $q->bindParam(':fornavn', $fornavn, PDO::PARAM_STR);
+    $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
+    $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
+    $q->bindParam(':epost', $epost, PDO::PARAM_STR);
+    $q->bindParam(':city', $city, PDO::PARAM_INT);
+    $q->bindParam(':zip', $zip, PDO::PARAM_STR);
+    $q->bindParam(':passord', $passord, PDO::PARAM_STR);
 
-$conn = new mysqli($servername, $username, $password, $db);
+    $fornavn = $_POST["fornavn"];
+    $etternavn = $_POST["etternavn"];
+    $epost = $_POST["epost"];
+    $tlf = $_POST["tlf"];
+    $city = $_POST["city"];
+    $zip = $_POST["zip"];
+    $passord = $_POST["passord"];
+    
+    $sql = "UPDATE students set fornavn='$fornavn', etternavn='$etternavn', tlf='$tlf',epost='$epost', gender='$gender' WHERE student_id='$student_id'";
 
-if ($conn->connect_error){
-	die("Connection failed: ". $conn->connect_error);
-}
+    try {
+        $q->execute();
+        header("Location: profile.php"); /* Redirect browser */
+    exit();
+    } catch (PDOException $e) {
+        echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
+    }
+    //$q->debugDumpParams();
+    
+    if($pdo->lastInsertId() > 0) {
+        echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
+    } else {
+        echo "Data were not inserted into database.";
+    }
 
-$sql = "update students set name='$name', age='$age', gender='$gender' where student_id='$student_id'";
-
-if ($conn->query($sql) === TRUE) {
-	echo "Records updated: ".$student_id."-".$name."-".$age."-".$gender;
-} else {
-	echo "Error: ".$sql."<br>".$conn->error;
-}
-
-$conn->close();
+    }
 
 ?>
     </div>

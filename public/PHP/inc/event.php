@@ -39,15 +39,14 @@ if ($result->num_rows > 0) {
     </div>
   </div>
 </form>
-<<<<<<< HEAD
-<?php }}include "inc/footer.html" ?>
-=======
+
+
+
 <br><br>
 <?php   
 
 }
 }
 ?>
->>>>>>> c24f0b76c944a23372507d95e96003946b0e821f
 </body>
 </html>
