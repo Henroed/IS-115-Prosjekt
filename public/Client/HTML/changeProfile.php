@@ -1,5 +1,16 @@
 <?php session_start(); 
+    require_once('../../../private/Database/inc/db_connect.php'); 
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase"); 
+     
+    $profileValue = $_SESSION['loginVerdi'];
+
+    $sq1 = "SELECT fornavn, etternavn, epost, tlf, city, zip FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";
+    $result = $conn->query($sq1);
+
+    if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+
     ?> 
     <!DOCTYPE html>
 <html lang="no" dir="ltr">
@@ -10,93 +21,74 @@
    </head>
 <body>
   <div class="container">
-    <div class="title">Registrer</div>
+    <div class="title">Endre profil</div>
     <div class="content">
       <form action="" method="POST">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">Fornavn</span>
-            <input type="text" name="Fornavn" value="Chris" required>
+            <span class="details">fornavn</span>
+            <input type="text" name="fornavn" value="<?php echo $row["fornavn"] ?>">
           </div>
           <div class="input-box">
-            <span class="details">Etternavn</span>
-            <input type="text" name="Etternavn" value="Martin">
+            <span class="details">etternavn</span>
+            <input type="text" name="etternavn" value="<?php $row["etternavn"] ?>">
           </div>
           <div class="input-box">
-            <span class="details">Epost</span>
-            <input type="text" name="Epost" value="Chris@mail.com" required>
+            <span class="details">epost</span>
+            <input type="text" name="epost" value="<?php echo $row["epost"] ?>" >
           </div>
           <div class="input-box">
-            <span class="details">Tlf nummer</span>
-            <input type="text" name="Tlf" value="12345678" required>
+            <span class="details">tlf nummer</span>
+            <input type="text" name="tlf" value="<?php echo $row["tlf"] ?>" >
           </div>
           <div class="input-box">
             <span class="details">By</span>
-            <input type="text" name="City" value="Kristiansand" required>
+            <input type="text" name="city" value="<?php echo $row["city"] ?>" >
           </div>
           <div class="input-box">
-            <span class="details">Zip-kode</span>
-            <input type="text" name="Zip" value="4623" required>
+            <span class="details">zip-kode</span>
+            <input type="text" name="zip" value="<?php echo $row["zip"] ?>" >
           </div>
           <div class="input-box">
-            <span class="details">Passord</span>
-            <input type="text" name="Passord" value="dsaoass" placeholder="Skriv inn passord" required>
+            <span class="details">passord</span>
+            <input type="password" name="passord"  placeholder="Skriv nytt inn passord">
           </div>
           <div class="input-box">
             <span class="details">Bekreft passord</span>
-            <input type="text" placeholder="Gjenta ditt passord" >
+            <input type="password" placeholder="Gjenta ditt passord" >
           </div>
         </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
-          <span class="gender-title">Kjønn</span>
-          <div class="category">
-            <label for="dot-1" value="Mann">
-            <span class="dot one"></span>
-            <span class="gender">Mann</span>
-          </label>
-          <label for="dot-2" value="Dame">
-            <span class="dot two"></span>
-            <span class="gender">Dame</span>
-          </label>
-          <label for="dot-3" value="annet">
-            <span class="dot three"></span>
-            <span class="gender">Annet</span>
-            </label>
-          </div>
-        </div>
+      
+       
         <div class="button">
           <input type="submit" value="Lagre endret innformasjon"></input>
         </div>
       </form>
 
       <?php
-
+      }}
 if(isset($_POST['Lagre endret innformasjon'])){
 
-    require_once('../../../private/Database/inc/db_connect.php'); 
+    $sql = "UPDATE user set fornavn='$fornavn', etternavn='$etternavn', tlf='$tlf', epost='$epost' WHERE userID='$student_id'";
 
     $q = $pdo->prepare($sql);
     
-    $q->bindParam(':Fornavn', $fornavn, PDO::PARAM_STR);
-    $q->bindParam(':Etternavn', $etternavn, PDO::PARAM_STR);
-    $q->bindParam(':Tlf', $tlf, PDO::PARAM_INT);
-    $q->bindParam(':Epost', $epost, PDO::PARAM_STR);
-    $q->bindParam(':City', $city, PDO::PARAM_STR);
-    $q->bindParam(':Zip', $zip, PDO::PARAM_INT);
-    $q->bindParam(':Passord', $passord, PDO::PARAM_STR);
+    $q->bindParam(':fornavn', $fornavn, PDO::PARAM_STR);
+    $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
+    $q->bindParam(':tlf', $tlf, PDO::PARAM_INT);
+    $q->bindParam(':epost', $epost, PDO::PARAM_STR);
+    $q->bindParam(':city', $city, PDO::PARAM_STR);
+    $q->bindParam(':zip', $zip, PDO::PARAM_INT);
+    $q->bindParam(':passord', $passord, PDO::PARAM_STR);
 
-    $fornavn = $_POST["Fornavn"];
-    $Etternavn = $_POST["Etternavn"];
-    $epost = $_POST["Epost"];
-    $tlf = $_POST["Tlf"];
-    $city = $_POST["City"];
-    $zip = $_POST["Zip"];
-    $passord = $_POST["Passord"];
+    $fornavn = $_POST["fornavn"];
+    $etternavn = $_POST["etternavn"];
+    $epost = $_POST["epost"];
+    $tlf = $_POST["tlf"];
+    $city = $_POST["city"];
+    $zip = $_POST["zip"];
+    $passord = $_POST["passord"];
     
-    $sql = "UPDATE user set Fornavn='$fornavn', Etternavn='$etternavn', Tlf='$tlf', Epost='$epost' WHERE userID='$student_id'";
 
     try {
         $q->execute();
@@ -104,7 +96,7 @@ if(isset($_POST['Lagre endret innformasjon'])){
         echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
     }
 
-    //$q->debugDumpParams();
+$q->debugDumpParams();
       
     if($q->rowCount() > 0) {
         echo $q->rowCount() . " record" . ($q->rowCount() != 1 ? "s were " : " was ") . "updated.";
