@@ -16,7 +16,7 @@
   <div class="container">
     <div class="title">Min profil</div>
     <div class="content">
-      <form action="register" method="POST">
+      <form action="changeProfile.php" method="POST">
         <div class="user-details">
           <div class="input-box">
             <span class="details"><?php echo $row["fornavn"] . " " . $row["etternavn"]?></span>
