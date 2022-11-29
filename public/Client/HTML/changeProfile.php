@@ -10,7 +10,7 @@
   <div class="container">
     <div class="title">Registrer</div>
     <div class="content">
-      <form action="register.php" method="POST">
+      <form action="" method="POST">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Fornavn</span>
@@ -45,34 +45,28 @@
             <input type="text" placeholder="Gjenta ditt passord" >
           </div>
         </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
-          <span class="gender-title">Kjønn</span>
-          <div class="category">
-            <label for="dot-1" value="Mann">
-            <span class="dot one"></span>
-            <span class="gender">Mann</span>
-          </label>
-          <label for="dot-2" value="Dame">
-            <span class="dot two"></span>
-            <span class="gender">Dame</span>
-          </label>
-          <label for="dot-3" value="annet">
-            <span class="dot three"></span>
-            <span class="gender">Annet</span>
-            </label>
-          </div>
-        </div>
         <div class="button">
-          <input type="submit" value="Lagre endret innformasjon">
+          <input type="submit" name="submit "value="Lagre endret innformasjon">
         </div>
       </form>
 
       <?php
 
-if(isset($_POST['Lagre endret innformasjon'])){
+$profileValue = $_SESSION['loginVerdi'];
+
+if(isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])){
+
+  require_once('../../../private/Database/inc/db_connect.php'); 
+
+    echo $fornavn = $_POST["fornavn"];
+    echo $etternavn = $_POST["etternavn"];
+    echo $epost = $_POST["epost"];
+    echo $tlf = $_POST["tlf"];
+    echo $city = $_POST["city"];
+    echo $zip = $_POST["zip"];
+    $passord = $_POST["passord"];
+  
+    $sql = "UPDATE user set Fornavn = :fornavn, Etternavn = :etternavn, Tlf = :tlf, Epost = :epost , city= :city, Zip = :zip, Passord = :passord WHERE Tlf = '$profileValue' OR Epost = '$profileValue'";
 
     $q = $pdo->prepare($sql);
     
@@ -83,16 +77,6 @@ if(isset($_POST['Lagre endret innformasjon'])){
     $q->bindParam(':city', $city, PDO::PARAM_INT);
     $q->bindParam(':zip', $zip, PDO::PARAM_STR);
     $q->bindParam(':passord', $passord, PDO::PARAM_STR);
-
-    $fornavn = $_POST["fornavn"];
-    $etternavn = $_POST["etternavn"];
-    $epost = $_POST["epost"];
-    $tlf = $_POST["tlf"];
-    $city = $_POST["city"];
-    $zip = $_POST["zip"];
-    $passord = $_POST["passord"];
-    
-    $sql = "UPDATE students set fornavn='$fornavn', etternavn='$etternavn', tlf='$tlf',epost='$epost', gender='$gender' WHERE student_id='$student_id'";
 
     try {
         $q->execute();
