@@ -1,10 +1,32 @@
 /* Brukes av: myEvents.php, createEvent.php, homepage.php */
-.tabs {
-	display: flex;
-	flex-wrap: wrap;
+/**
+ * Generic Styling
+*/
+body {
+  min-height: 100vh;
+  background-color: lightblue;
+	box-sizing: border-box;
+	padding-top: 10vh;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+  position: relative;
+  line-height: 1.5;
+  max-width: 60rem;
+  margin: 10px;
+  font-size: 100%;
+}
+/* Innhold */
+.container .content {
+  max-width: 35%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px
 }
 .tabs label {
-	order: 1;
 	display: block;
 	padding: 1rem 2rem;
 	margin-right: 0.2rem;
@@ -13,14 +35,7 @@
   font-weight: bold;
   transition: background ease 0.2s;
 }
-.tabs .tab {
-  order: 99; 
-  flex-grow: 1;
-	width: 100%;
-	display: none;
-  padding: 1rem;
-  background: #fff;
-}
+
 .tabs input[type="radio"] {
 	display: none;
 }
@@ -43,20 +58,5 @@
   }
 }
 
-/**
- * Generic Styling
-*/
-body {
-  min-height: 100vh;
-  background-color: lightblue;
-	box-sizing: border-box;
-	padding-top: 10vh;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  font-weight: 300;
-  position: relative;
-  line-height: 1.5;
-  max-width: 60rem;
-  margin: 10px;
-  font-size: 100%;
-}
+
 
