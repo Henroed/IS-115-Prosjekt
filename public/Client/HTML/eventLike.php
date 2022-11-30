@@ -4,39 +4,36 @@
 
   require_once('../../../private/Database/inc/db_connect.php');
 
-  $sql = "INSERT INTO myEvent
-  (eventID, userID) 
-  VALUES 
-  (:eventID, :userID)";  
+  $sql = "INSERT INTO myEvent (eventID, userID) VALUES (:eventID, :brukerID)";  
   
   $q = $pdo->prepare($sql);
 
   $q->bindParam(':eventID', $eventID, PDO::PARAM_STR);
-  $q->bindParam(':userID', $selectValue, PDO::PARAM_STR);
+  $q->bindParam(':brukerID', $valgtVerdi, PDO::PARAM_STR);
 
   $eventID = $_POST["eventID"];
 
-    $profileValue = $_SESSION['loginVerdi'];
-    $userQuery = "SELECT userID FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";
+    $profilVerdi = $_SESSION['loginVerdi'];
+    $brukerQuery = "SELECT userID FROM user WHERE tlf = '$profilVerdi' OR epost = '$profilVerdi'";
 
-    $userValue = $conn->query($userQuery);
+    $brukerVerdi = $conn->query($brukerQuery);
 
-    $userID = $userValue->fetch_assoc();
-    $selectValue = $userID["userID"];
+    $brukerID = $brukerVerdi->fetch_assoc();
+    $valgtVerdi = $brukerID["brukerID"];
 
 try {
   $q->execute();
-  header("Location: myEvents.php"); /* Redirect browser */
+  header("Location: mineEvents.php");
 exit();
 } catch (PDOException $e) {
-  echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
+  echo "Error querying database: " . $e->getMessage() . "<br>";
 }
-//$q->debugDumpParams();
+
 
 if($pdo->lastInsertId() > 0) {
-  echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
+  echo "Data satt i databasen, identifisert med UID " . $pdo->lastInsertId() . ".";
 } else {
-  echo "Data were not inserted into database.";
+  echo "Data ikke satt i databasen.";
 }
 
 ?>

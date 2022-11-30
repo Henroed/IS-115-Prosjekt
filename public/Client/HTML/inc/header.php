@@ -10,12 +10,12 @@
         <i class="fas fa-bars"></i>
       </label>
       <ul>
-        <li><a href="homepage.php">Home</a></li>
-        <li><a href="myEvents.php">My Events</a></li>
-        <li><a href="createEvent.php">Create Event</a></li>
-        <li><a href="profile.php">My Profile</a></li>
-        <li><a href="aboutUs.php">About Us</a></li>
-        <a href="logout.php">Logout</a>
+        <li><a href="hjemmeside.php">Hjemmeside</a></li>
+        <li><a href="mineEvents.php">Mine Events</a></li>
+        <li><a href="lagEvent.php">Lag Event</a></li>
+        <li><a href="minProfil.php">Min Profil</a></li>
+        <li><a href="omOss.php">Om oss</a></li>
+        <li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
   

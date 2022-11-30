@@ -67,22 +67,19 @@
         </div>
         <div class="button">
           <input type="submit" value="Register">
-          <div class="login">Allerede medlem? <a href="login.php">Logg inn her</a></div>
+          <div class="login">Allerede registrert? <a href="login.php">Logg inn her</a></div>
         </div>
       </form>
 
       <?php 
         if(isset($_SESSION['loginVerdi'])) {
-          header("Location:homepage.php"); 
+          header("Location:hjemmeside.php"); 
             }
 
         if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {
         require_once('../../../private/Database/inc/db_connect.php');
 
-        $sql = "INSERT INTO user
-        (fornavn, etternavn, tlf, epost, city, zip, passord) 
-        VALUES 
-        (:fornavn, :etternavn, :tlf, :epost, :city, :zip, :passord)";  
+        $sql = "INSERT INTO user (fornavn, etternavn, tlf, epost, city, zip, passord) VALUES (:fornavn, :etternavn, :tlf, :epost, :city, :zip, :passord)";  
         
         $q = $pdo->prepare($sql);
     
@@ -90,7 +87,7 @@
         $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
         $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
         $q->bindParam(':epost', $epost, PDO::PARAM_STR);
-        $q->bindParam(':city', $city, PDO::PARAM_INT);
+        $q->bindParam(':city', $city, PDO::PARAM_STR);
         $q->bindParam(':zip', $zip, PDO::PARAM_STR);
         $q->bindParam(':passord', $passord, PDO::PARAM_STR);
     
