@@ -8,7 +8,7 @@
    </head>
 <body>
   <div class="container">
-    <div class="title">Registrer</div>
+    <div class="title">Registrer deg</div>
     <div class="content">
       <form action="register.php" method="POST">
         <div class="user-details">
