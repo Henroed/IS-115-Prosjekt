@@ -1,18 +1,5 @@
-<?php session_start(); 
-    require_once('../../../private/Database/inc/db_connect.php'); 
-    $conn = mysqli_connect("localhost", "root", "", "eventdatabase"); 
-     
-    $profileValue = $_SESSION['loginVerdi'];
-
-    $sq1 = "SELECT fornavn, etternavn, epost, tlf, city, zip FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";
-    $result = $conn->query($sq1);
-
-    if ($result->num_rows > 0) {
-      // output data of each row
-      while($row = $result->fetch_assoc()) {
-
-    ?> 
-    <!DOCTYPE html>
+<?php session_start(); ?>
+<!DOCTYPE html>
 <html lang="no" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -26,88 +13,91 @@
       <form action="" method="POST">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">fornavn</span>
-            <input type="text" name="fornavn" value="<?php echo $row["fornavn"] ?>">
+            <span class="details">Fornavn</span>
+            <input type="text" name="fornavn" value="Chris" required>
           </div>
           <div class="input-box">
-            <span class="details">etternavn</span>
-            <input type="text" name="etternavn" value="<?php $row["etternavn"] ?>">
+            <span class="details">Etternavn</span>
+            <input type="text" name="etternavn" value="Martin">
           </div>
           <div class="input-box">
-            <span class="details">epost</span>
-            <input type="text" name="epost" value="<?php echo $row["epost"] ?>" >
+            <span class="details">Epost</span>
+            <input type="text" name="epost" value="Chris@mail.com" required>
           </div>
           <div class="input-box">
-            <span class="details">tlf nummer</span>
-            <input type="text" name="tlf" value="<?php echo $row["tlf"] ?>" >
+            <span class="details">Tlf nummer</span>
+            <input type="text" name="tlf" value="12345678" required>
           </div>
           <div class="input-box">
             <span class="details">By</span>
-            <input type="text" name="city" value="<?php echo $row["city"] ?>" >
+            <input type="text" name="city" value="Kristiansand" required>
           </div>
           <div class="input-box">
-            <span class="details">zip-kode</span>
-            <input type="text" name="zip" value="<?php echo $row["zip"] ?>" >
+            <span class="details">Zip-kode</span>
+            <input type="text" name="zip" value="4623" required>
           </div>
           <div class="input-box">
-            <span class="details">passord</span>
-            <input type="password" name="passord"  placeholder="Skriv nytt inn passord">
+            <span class="details">Passord</span>
+            <input type="text" name="passord" value="dsaoass" placeholder="Skriv inn passord" required>
           </div>
           <div class="input-box">
             <span class="details">Bekreft passord</span>
-            <input type="password" placeholder="Gjenta ditt passord" >
+            <input type="text" placeholder="Gjenta ditt passord" >
           </div>
         </div>
-      
-       
         <div class="button">
-          <input type="submit" value="Lagre endret innformasjon"></input>
+          <input type="submit" name="submit "value="Lagre endret innformasjon">
         </div>
       </form>
 
       <?php
-      }}
-if(isset($_POST['Lagre endret innformasjon'])){
 
-    $sql = "UPDATE user set fornavn='$fornavn', etternavn='$etternavn', tlf='$tlf', epost='$epost' WHERE userID='$student_id'";
+
+
+$profileValue = $_SESSION['loginVerdi'];
+
+if(isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])){
+
+  require_once('../../../private/Database/inc/db_connect.php'); 
+
+    echo $fornavn = $_POST["fornavn"];
+    echo $etternavn = $_POST["etternavn"];
+    echo $epost = $_POST["epost"];
+    echo $tlf = $_POST["tlf"];
+    echo $city = $_POST["city"];
+    echo $zip = $_POST["zip"];
+    $passord = $_POST["passord"];
+  
+    $sql = "UPDATE user set Fornavn = :fornavn, Etternavn = :etternavn, Tlf = :tlf, Epost = :epost , city= :city, Zip = :zip, Passord = :passord WHERE Tlf = '$profileValue' OR Epost = '$profileValue'";
 
     $q = $pdo->prepare($sql);
     
     $q->bindParam(':fornavn', $fornavn, PDO::PARAM_STR);
     $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
-    $q->bindParam(':tlf', $tlf, PDO::PARAM_INT);
+    $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
     $q->bindParam(':epost', $epost, PDO::PARAM_STR);
-    $q->bindParam(':city', $city, PDO::PARAM_STR);
-    $q->bindParam(':zip', $zip, PDO::PARAM_INT);
+    $q->bindParam(':city', $city, PDO::PARAM_INT);
+    $q->bindParam(':zip', $zip, PDO::PARAM_STR);
     $q->bindParam(':passord', $passord, PDO::PARAM_STR);
-
-    $fornavn = $_POST["fornavn"];
-    $etternavn = $_POST["etternavn"];
-    $epost = $_POST["epost"];
-    $tlf = $_POST["tlf"];
-    $city = $_POST["city"];
-    $zip = $_POST["zip"];
-    $passord = $_POST["passord"];
-    
 
     try {
         $q->execute();
+        header("Location: profile.php"); /* Redirect browser */
+    exit();
     } catch (PDOException $e) {
         echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
     }
 
-$q->debugDumpParams();
-      
-    if($q->rowCount() > 0) {
-        echo $q->rowCount() . " record" . ($q->rowCount() != 1 ? "s were " : " was ") . "updated.";
-    } elseif($q->rowCount() == 0) {
-        echo "The record was not updated (no change).";
+    //$q->debugDumpParams();
+    
+    if($pdo->lastInsertId() > 0) {
+        echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
+
     } else {
-        echo "The record was not updated.";
+        echo "Data were not inserted into database.";
     }
 
     }
-    $conn->close();
 
 ?>
     </div>
