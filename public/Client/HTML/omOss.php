@@ -16,7 +16,21 @@
   <div class="container">
     <div class="title">Om oss</div>
     <div class="content">
-      <h1>Det <br> var <br> en <br> gang <br> en <br> jente <br> som <br> het <br> Silje <br></h2>
+      Vi et to studenter på UiA i gang med å lærer PHP-webutvikling. 
+      Denne siden er ment som et prosjekt for å vise programmeringsevnen vår i språket etter et semester.
+    </div><br>
+    <div class="title">Hvordan bruke siden</div>
+    <div class="content">
+      På hjemmesiden har du oversikt over alle kommende events. Om du trykker på "kommer" blir eventen lagret i Mine Events, 
+      der du også kan fjerne dem om du ombestemmer deg. 
+      <br>
+      Events kan opprettes på Lag Events og du kan få en oversikt over eller endre profilen din på Min Profil.
+    </div><br>
+    <div class="title">Kontakt Oss</div>
+    <div class="content">
+      Telefon: 12345678
+        <br><br>
+      Epost: abc@gmail.com
     </div>
 </div>
 <?php include "inc/footer.html" ?>

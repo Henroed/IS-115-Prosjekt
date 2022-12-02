@@ -18,7 +18,8 @@
        $userID = $userValue->fetch_assoc();
        $selectValue = $userID["userID"];
 
-        $sql = "SELECT event.eventID, event.eventNavn, event.dato, event.beskrivelse FROM event 
+       $side = "mineEvents";
+      $sql = "SELECT event.eventID, event.eventNavn, event.dato, event.beskrivelse FROM event 
                 LEFT JOIN myEvent ON event.eventID=myEvent.eventID WHERE myEvent.userID = '$selectValue' AND event.dato >= CURDATE()";
          include '../../PHP/inc/event.php';
 

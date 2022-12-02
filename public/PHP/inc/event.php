@@ -3,14 +3,16 @@
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-  // output data of each row
   while($row = $result->fetch_assoc()) {
-          $rows[] = $row;
-  // For hver ID gjør dette
-  // for(["event_id"] = x){
+
+    if ($side == "hjemmeside") {
+      echo '<form action="eventLike.php" method="POST">';
+    } elseif ($side == "mineEvents") {
+      echo '<form action="eventFjern.php" method="POST">';
+    }
   ?>
-<form action="eventLike.php" method="POST">
-    <div class="content">
+  <div class="container">
+    <div class="wrapper">
       <div class="title"><span>
         <h2><?php echo $row["eventNavn"]?></h2></div>
       <div class="row">
@@ -28,8 +30,14 @@ if ($result->num_rows > 0) {
                 //your PHP code goes here
               ?>
         </div>
+        <input type="hidden" id="custId" name="eventID" value="<?php echo $row["eventID"] ?>">
       <div class="row button">
-        <input type="submit" value="<?php echo $row["eventID"] ?>" name="eventID">
+        <?php if ($side == "hjemmeside") {
+            echo '<input type="submit" value="Kommer">';
+        } elseif ($side == "mineEvents") {
+            echo '<input type="submit" value="Kommer ikke">';
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -37,7 +45,7 @@ if ($result->num_rows > 0) {
 
 <br><br>
 <?php   
-  }
+}
 }
 
 ?>

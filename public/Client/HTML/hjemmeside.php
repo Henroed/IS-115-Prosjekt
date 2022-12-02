@@ -9,6 +9,7 @@
       
       $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
       $i = 0;
+      $side = "hjemmeside";
 
       while($i <= 100) {
         $sql = "SELECT eventID, eventNavn, dato, beskrivelse FROM event WHERE eventID = $i AND dato >= CURDATE()";
