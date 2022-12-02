@@ -24,7 +24,7 @@
       På hjemmesiden har du oversikt over alle kommende events. Om du trykker på "kommer" blir eventen lagret i Mine Events, 
       der du også kan fjerne dem om du ombestemmer deg. 
       <br>
-      Events kan opprettes på Lag Events og du kan få en oversikt over eller endre profilen din på Min Profil.
+      Events kan opprettes på Lag Events, og du kan få en oversikt over eller endre profilen din på Min Profil.
     </div><br>
     <div class="title">Kontakt Oss</div>
     <div class="content">
