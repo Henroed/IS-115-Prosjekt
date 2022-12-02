@@ -4,12 +4,12 @@
 
   require_once('../../../private/Database/inc/db_connect.php');
 
-  $sql = "INSERT INTO myEvent (eventID, userID) VALUES (:eventID, :brukerID)";  
+  $sql = "INSERT INTO myEvent (eventID, userID) VALUES (:eventID, :userID)";  
   
   $q = $pdo->prepare($sql);
 
   $q->bindParam(':eventID', $eventID, PDO::PARAM_STR);
-  $q->bindParam(':brukerID', $valgtVerdi, PDO::PARAM_STR);
+  $q->bindParam(':userID', $valgtVerdi, PDO::PARAM_STR);
 
   $eventID = $_POST["eventID"];
 
@@ -19,7 +19,7 @@
     $brukerVerdi = $conn->query($brukerQuery);
 
     $brukerID = $brukerVerdi->fetch_assoc();
-    $valgtVerdi = $brukerID["brukerID"];
+    $valgtVerdi = $brukerID["userID"];
 
 try {
   $q->execute();
