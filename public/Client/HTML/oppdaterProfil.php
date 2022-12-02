@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+  $fornavn = $_POST["fornavn"];
+  $etternavn = $_POST["etternavn"];
+  $epost = $_POST["epost"];
+  $tlf = $_POST["tlf"];
+  $city = $_POST["city"];
+  $zip = $_POST["zip"];
+
+?>
 <!DOCTYPE html>
 <html lang="no" dir="ltr">
   <head>
@@ -7,42 +16,43 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
+  <?php include 'inc/header.php'; ?>
   <div class="container">
-    <div class="title">Endre profil</div>
+    <div class="title">Registrer</div>
     <div class="content">
       <form action="" method="POST">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Fornavn</span>
-            <input type="text" name="fornavn" value="Chris" required>
+            <input type="text" name="fornavn" value="<?php echo $fornavn?>" required>
           </div>
           <div class="input-box">
             <span class="details">Etternavn</span>
-            <input type="text" name="etternavn" value="Martin">
+            <input type="text" name="etternavn" value="<?php echo $etternavn?>" required>
           </div>
           <div class="input-box">
             <span class="details">Epost</span>
-            <input type="text" name="epost" value="Chris@mail.com" required>
+            <input type="text" name="epost" value="<?php echo $epost?>" required>
           </div>
           <div class="input-box">
             <span class="details">Tlf nummer</span>
-            <input type="text" name="tlf" value="12345678" required>
+            <input type="text" name="tlf" value="<?php echo $tlf?>" required>
           </div>
           <div class="input-box">
             <span class="details">By</span>
-            <input type="text" name="city" value="Kristiansand" required>
+            <input type="text" name="city" value="<?php echo $city?>" required>
           </div>
           <div class="input-box">
             <span class="details">Zip-kode</span>
-            <input type="text" name="zip" value="4623" required>
+            <input type="text" name="zip" value="<?php echo $zip?>" required>
           </div>
           <div class="input-box">
             <span class="details">Passord</span>
-            <input type="text" name="passord" value="dsaoass" placeholder="Skriv inn passord" required>
+            <input type="text" name="passord" placeholder="Skriv inn passord" required>
           </div>
           <div class="input-box">
             <span class="details">Bekreft passord</span>
-            <input type="text" placeholder="Gjenta ditt passord" >
+            <input type="text" name="passordBekreft" placeholder="Gjenta ditt passord" required>
           </div>
         </div>
         <div class="button">
@@ -52,23 +62,24 @@
 
       <?php
 
-
-
 $profileValue = $_SESSION['loginVerdi'];
 
-if(isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])){
+if(isset($_POST["passordBekreft"]) && isset($_POST["passord"])){
 
-  require_once('../../../private/Database/inc/db_connect.php'); 
-
-    echo $fornavn = $_POST["fornavn"];
-    echo $etternavn = $_POST["etternavn"];
-    echo $epost = $_POST["epost"];
-    echo $tlf = $_POST["tlf"];
-    echo $city = $_POST["city"];
-    echo $zip = $_POST["zip"];
+    $fornavn = $_POST["fornavn"];
+    $etternavn = $_POST["etternavn"];
+    $epost = $_POST["epost"];
+    $tlf = $_POST["tlf"];
+    $city = $_POST["city"];
+    $zip = $_POST["zip"];
     $passord = $_POST["passord"];
+    $passordBekreft = $_POST["passordBekreft"];
+
+    if ($passord == $passordBekreft) {
+
+    require_once('../../../private/Database/inc/db_connect.php'); 
   
-    $sql = "UPDATE user set Fornavn = :fornavn, Etternavn = :etternavn, Tlf = :tlf, Epost = :epost , city= :city, Zip = :zip, Passord = :passord WHERE Tlf = '$profileValue' OR Epost = '$profileValue'";
+    $sql = "UPDATE user SET Fornavn = :fornavn, Etternavn = :etternavn, Tlf = :tlf, Epost = :epost , city= :city, Zip = :zip, Passord = :passord WHERE Tlf = '$profilVerdi' OR Epost = '$profilVerdi'";
 
     $q = $pdo->prepare($sql);
     
@@ -76,29 +87,29 @@ if(isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"]
     $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
     $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
     $q->bindParam(':epost', $epost, PDO::PARAM_STR);
-    $q->bindParam(':city', $city, PDO::PARAM_INT);
+    $q->bindParam(':city', $city, PDO::PARAM_STR);
     $q->bindParam(':zip', $zip, PDO::PARAM_STR);
     $q->bindParam(':passord', $passord, PDO::PARAM_STR);
 
     try {
         $q->execute();
-        header("Location: profile.php"); /* Redirect browser */
+        header("Location: minProfil.php");
     exit();
     } catch (PDOException $e) {
-        echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
+        echo "Error querying database: " . $e->getMessage() . "<br>";
     }
-
     //$q->debugDumpParams();
     
     if($pdo->lastInsertId() > 0) {
         echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
+    } else {
+        echo "Data ikke satt i databasen.";
+    }
 
     } else {
-        echo "Data were not inserted into database.";
+      echo "Feil med bekrefting av passord!";
     }
-
-    }
-
+  }
 ?>
     </div>
   </div>

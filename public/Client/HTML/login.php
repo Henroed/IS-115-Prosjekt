@@ -1,11 +1,9 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
-<html lang="en" dir="ltr">
+<html lang="no" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>Login Form | CodingLab</title> -->
     <link rel="stylesheet" href="../Design/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
   </head>
@@ -22,7 +20,7 @@
             <i class="fas fa-lock"></i>
             <input type="password" name="passord" placeholder="Passord" required>
           </div>
-          <div class="pass"><a href="forgotPassword.html">Glømt passord?</a></div>
+          <div class="pass"><a href="glømtPassord.html">Glømt passord?</a></div>
           <div class="row button">
             <input type="submit" value="Logg inn">
           </div>
@@ -31,7 +29,7 @@
         <?php 
 
           if(isset($_SESSION['loginVerdi'])) {
-              header("Location:homepage.php"); 
+              header("Location:hjemmeside.php"); 
                 }
 
           if (isset($_POST["loginVerdi"]) && isset($_POST["passord"])) {
@@ -46,10 +44,10 @@
         
             if ($row = mysqli_fetch_assoc($result)) {
              $_SESSION['loginVerdi'] = $loginVerdi;
-             header("Location: homepage.php"); /* Redirect browser */
+             header("Location: hjemmeside.php");
         
             } else {
-              echo "Your username or password is incorrect!";
+              echo "Feil Epost, tlf-nummer eller passord!";
             }
             $conn->close();
           }

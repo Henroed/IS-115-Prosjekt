@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="no" dir="ltr">
 <link rel="stylesheet" href="../Design/css/main.css">
   <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
      <?php include 'inc/header.php'; ?>
   <div class="container">
     <div class="content">
-      <form action="createEvent.php" method="POST">
+      <form action="" method="POST">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Event navn</span>
@@ -36,10 +36,7 @@
         if (isset($_POST["eventNavn"]) && isset($_POST["dato"]) && isset($_POST["beskrivelse"])) {
         require_once('../../../private/Database/inc/db_connect.php');
 
-        $sql = "INSERT INTO event
-        (eventNavn, dato, beskrivelse) 
-        VALUES 
-        (:eventNavn, :dato, :beskrivelse)";  
+        $sql = "INSERT INTO event (eventNavn, dato, beskrivelse) VALUES (:eventNavn, :dato, :beskrivelse)";  
         
         $q = $pdo->prepare($sql);
     
@@ -55,22 +52,21 @@
         $q->execute();
     exit();
     } catch (PDOException $e) {
-        echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
+        echo "Error querying database: " . $e->getMessage() . "<br>";
     }
-    //$q->debugDumpParams();
     
     if($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
-    } else {
-        echo "Data were not inserted into database.";
-    }
+      echo "Data satt i databasen, identifisert med UID " . $pdo->lastInsertId() . ".";
+  } else {
+      echo "Data ikke satt i databasen.";
+  }
 
     }
       ?>
     </div>
   </div>
   <?php include "inc/footer.html";
-        if(!isset($_SESSION['loginVerdi'])) // If session is not set then redirect to Login Page
+        if(!isset($_SESSION['loginVerdi']))
         {
             header("Location:login.php");  
         }
