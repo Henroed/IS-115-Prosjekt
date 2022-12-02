@@ -12,7 +12,7 @@ if ($result->num_rows > 0) {
     }
   ?>
   <div class="container">
-    <div class="wrapper">
+    <div class="content">
       <div class="title"><span>
         <h2><?php echo $row["eventNavn"]?></h2></div>
       <div class="row">
