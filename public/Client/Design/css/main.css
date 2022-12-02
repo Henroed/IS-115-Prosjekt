@@ -16,15 +16,16 @@ body {
   font-size: 100%;
 }
 /* Innhold */
-.container .content {
-  max-width: 35%;
+ .content {
+  max-width: 40%;
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
   display: block;
-  align-items: center;
+  align-items: horizontal;
   justify-content: center;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  border: 1px solid;
 }
 .tabs label {
 	display: block;

@@ -5,12 +5,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-  
+          $rows[] = $row;
   // For hver ID gjør dette
-  for(["event_id"] = x){
+  // for(["event_id"] = x){
   ?>
 <form action="eventLike.php" method="POST">
-  <div class="container">
     <div class="content">
       <div class="title"><span>
         <h2><?php echo $row["eventNavn"]?></h2></div>
@@ -20,7 +19,7 @@ if ($result->num_rows > 0) {
       </div>
        <div class="row">
        <div class="details"> <h4>Dato: </h4>
-          <?php echo $row["dato"]?>
+          <?php echo date("d/m/Y", strtotime($row["dato"]))?>
        </div>
           <div class="row">
             <i class="fas fa-bilde"></i>
@@ -40,7 +39,7 @@ if ($result->num_rows > 0) {
 <?php   
   }
 }
-}
+
 ?>
 </body>
 </html>

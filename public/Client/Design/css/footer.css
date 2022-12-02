@@ -13,29 +13,30 @@ footer{
   left: 0;
   background:  #9b59b6;
 }
-footer .content{
+footer .contents{
   max-width: 1350px;
   margin: auto;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
+  background-color: #9b59b6;
   justify-content: space-between;
 }
-footer .content p,a{
+footer .contents p,a{
   color: #fff;
 }
-footer .content .box{
+footer .contents .box{
   width: 100%;
   transition: all 0.4s ease;
 }
-footer .content .topic{
+footer .contents .topic{
   font-size: 22px;
   font-weight: 600;
   color: #fff;
   margin-bottom: 16px;
 
 }
-footer .content p{
+footer .contents p{
   text-align: justify;
 }
 
@@ -56,15 +57,15 @@ footer a:hover{
   color: #eb2f06;
 }
 @media (max-width:1100px) {
-  footer .content .middle{
+  footer .contents .middle{
     padding-left: 50px;
   }
 }
 @media (max-width:950px){
-  footer .content .box{
+  footer .contents .box{
     width: 50%;
   }
-  .content .right{
+  .contents .right{
     margin-top: 40px;
   }
 }
@@ -72,11 +73,11 @@ footer a:hover{
   footer{
     position: relative;
   }
-  footer .content .box{
+  footer .contents .box{
     width: 100%;
     margin-top: 30px;
   }
-  footer .content .middle{
+  footer .contents .middle{
     padding-left: 0;
   }
 }
