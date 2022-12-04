@@ -16,10 +16,10 @@
   <div class="container">
     <div class="title">Om oss</div>
     <div class="content">
-      Vi et to studenter på UiA i gang med å lærer PHP-webutvikling. 
-      Denne siden er ment som et prosjekt for å vise programmeringsevnen vår i språket etter et semester.
+      Vi et to studenter på UiA i gang med å lære PHP-webutvikling. 
+      Denne nettsiden er ment som et prosjekt for å vise programmeringsevnen vår i språket etter fullført semester.
     </div><br>
-    <div class="title">Hvordan bruke siden</div>
+    <div class="title">Hvordan bruke nettsiden</div>
     <div class="content">
       På hjemmesiden har du oversikt over alle kommende events. Om du trykker på "kommer" blir eventen lagret i Mine Events, 
       der du også kan fjerne dem om du ombestemmer deg. 

@@ -1,9 +1,10 @@
-/* Brukes av: myEvents.php, createEvent.php, homepage.php */
+/* Brukes av: myEvents.php, homepage.php */
 /**
  * Generic Styling
 */
 body {
   min-height: 100vh;
+  max-width: 100%;
   background-color: lightblue;
 	box-sizing: border-box;
 	padding-top: 10vh;
@@ -15,17 +16,22 @@ body {
   margin: 10px;
   font-size: 100%;
 }
+
 /* Innhold */
+.container{
+  float: left;
+  margin-left: 25px;
+  padding: 50;
+}
  .content {
-  max-width: 40%;
+  width: 350px;
+  height: 450px;
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
   display: block;
-  align-items: horizontal;
   justify-content: center;
   margin-bottom: 20px;
-  border: 1px solid;
 }
 .tabs label {
 	display: block;

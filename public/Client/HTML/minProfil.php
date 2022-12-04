@@ -25,27 +25,34 @@
       <form action="oppdaterProfil.php" method="POST">
         <div class="user-details">
           <div class="input-box">
-            <span class="details"><?php echo $fornavn . " " . $etternavn?></span>
+            <span class="details">
+              <h5>Navn:</h5>
+              <?php echo $fornavn . " " . $etternavn?></span>
             <input type="hidden" id="custId" name="fornavn" value="<?php echo $fornavn?>">
             <input type="hidden" id="custId" name="etternavn" value="<?php echo $etternavn?>">
           </div>
           <div class="input-box">
+          <h5>Epost:</h5>
             <span class="details"><?php echo $epost?></span>
             <input type="hidden" id="custId" name="epost" value="<?php echo $epost?>">
           </div>
           <div class="input-box">
+          <h5>Telefonnummer:</h5>
             <span class="details"><?php echo $tlf?></span>
             <input type="hidden" id="custId" name="tlf" value="<?php echo $tlf?>">
           </div>
           <div class="input-box">
+          <h5>By:</h5>
             <span class="details"><?php echo $city?></span>
             <input type="hidden" id="custId" name="city" value="<?php echo $city?>">
           </div>
           <div class="input-box">
+          <h5>ZIP-kode:</h5>
             <span class="details"><?php echo $zip?></span>
             <input type="hidden" id="custId" name="zip" value="<?php echo $zip?>">
           </div>
           <div class="input-box">
+          <h5>Kjønn:</h5>
             <span class="details"><?php echo $kjønn?></span>
             <input type="hidden" id="custId" name="kjønn" value="<?php echo $kjønn?>">
           </div>

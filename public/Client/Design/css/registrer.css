@@ -1,4 +1,4 @@
-/* Brukes av: profile.php, aboutUs.php, forgotPassword.html, registrer.php, changeProfile.php */
+/* Brukes av: profile.php, aboutUs.php, forgotPassword.html, registrer.php, changeProfile.php  createEvent.php*/
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -27,12 +27,10 @@ body{
   padding: 25px 30px;
   border-radius: 5px;
   display: block;
-  align-items: center;
-  justify-content: center;
+  margin-top: 25px;
   margin-bottom: 20px;
-  border: 1px solid;
 }
-.container .h4{
+.container .title{
   font-size: 25px;
   font-weight: 500;
   position: relative;
@@ -46,13 +44,21 @@ body{
   width: 30px;
   border-radius: 5px;
 }
-.content form .details{
+.content form .user-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
-
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
 
 .user-details .input-box input{
   height: 45px;
@@ -72,7 +78,8 @@ body{
 
  form .button{
    height: 45px;
-   margin: 35px 0
+   margin: 35px 0;
+   width: 90%;
  }
  form .button input{
    height: 100%;

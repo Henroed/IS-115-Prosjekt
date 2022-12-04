@@ -1,7 +1,8 @@
 <?php session_start(); ?>
 <link rel="stylesheet" href="../Design/css/main.css">
-<?php include 'inc/header.php'; 
-
+<?php include 'inc/header.php'; ?>
+<h1> Hjemmeside </h1>
+<?php
       if(!isset($_SESSION['loginVerdi']))
       {
           header("Location:login.php");  

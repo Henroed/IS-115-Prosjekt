@@ -1,12 +1,13 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="no" dir="ltr">
-<link rel="stylesheet" href="../Design/css/main.css">
+<link rel="stylesheet" href="../Design/css/registrer.css">
   <head>
     <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <?php include 'inc/header.php'; ?>
   <div class="container">
+  <h1>Planlegg ett nytt event </h1>
     <div class="content">
       <form action="" method="POST">
         <div class="user-details">
@@ -26,8 +27,8 @@
             <span class="details">Bilde</span>
             <input type="file" name="bilde">
           </div>
-        <div class="button">
-          <input type="submit" value="Lag Event">
+          <div class="button">
+          <input type="submit" value="Lag event">
         </div>
       </form>
 
