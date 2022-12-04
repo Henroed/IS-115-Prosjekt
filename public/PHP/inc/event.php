@@ -22,6 +22,8 @@ if ($result->num_rows > 0) {
              <?php echo $row["beskrivelse"]?><br>
            <h4>Dato: </h4>
              <?php echo date("d/m/Y", strtotime($row["dato"]))?>
+                <h5>Antall som kommer: </h5> 
+                <?php include 'eventKommer.php' ?>
         </div><!-- Slutt details -->
      
           <i class="fas fa-bilde"></i>
@@ -42,8 +44,8 @@ if ($result->num_rows > 0) {
           echo '<input type="submit" value="Kommer ikke">';
          }     
           ?>
+        
       </div> <!-- Slutt row button -->
-
     </div><!--Slutt Content  -->
 </div> <!--Slutt Container  -->
 </form>
