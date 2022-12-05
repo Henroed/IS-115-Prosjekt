@@ -65,14 +65,15 @@ form .input-box span.details{
   outline: none;
   font-size: 16px;
   border-radius: 5px;
+  padding-top: 5px;
   padding-left: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #9b59b6;
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
-  border-color: #9b59b6;
+  border-color: #9307ca;
 }
 
  form .button{

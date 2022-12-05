@@ -2,7 +2,10 @@
 /**
  * Generic Styling
 */
-
+h1{
+  margin-left: 70px;
+  font-size: 40px;
+}
 body {
   background-color: lightblue;
 	box-sizing: border-box;

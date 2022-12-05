@@ -13,7 +13,7 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Event navn</span>
-            <input type="text" name="eventNavn" value="Navn på event" required>
+            <input type="text" name="eventNavn" placeholder="Navn på event" required>
           </div>
           <div class="input-box">
             <span class="details">Event dato</span>
@@ -21,7 +21,7 @@
           </div>
           <div class="input-box">
             <span class="details">Beskrivelse</span>
-            <input type="textarea" rows="4" cols="50" name="beskrivelse" value="Kort beskrivelse" required>
+            <input type="textarea" rows="4" cols="50" name="beskrivelse" placeholder="Kort beskrivelse" required>
           </div>
           <div class="input-box">
             <span class="details">Bilde</span>
