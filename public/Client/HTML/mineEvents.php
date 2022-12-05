@@ -10,8 +10,7 @@
       
       // koble til db
        $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
-       $i = 0;
-       
+
        // koble til profil, hent i db
        $profileValue = $_SESSION['loginVerdi'];
        $userQuery = "SELECT userID FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";

@@ -41,28 +41,8 @@
             <input type="text" name="passord" value="dsaoass" placeholder="Skriv inn passord" required>
           </div>
           <div class="input-box">
-            <span class="details">Bekreft passord</span>
-            <input type="text" placeholder="Gjenta ditt passord" >
-          </div>
-        </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
-          <span class="gender-title">Kjønn</span>
-          <div class="category">
-            <label for="dot-1" value="Mann">
-            <span class="dot one"></span>
-            <span class="gender">Mann</span>
-          </label>
-          <label for="dot-2" value="Dame">
-            <span class="dot two"></span>
-            <span class="gender">Dame</span>
-          </label>
-          <label for="dot-3" value="annet">
-            <span class="dot three"></span>
-            <span class="gender">Annet</span>
-            </label>
+            <span class="details">Bekreft passord</span> 
+            <input type="text" name="passordBekreft" placeholder="Gjenta ditt passord" required>
           </div>
         </div>
         <div class="button">
@@ -78,6 +58,18 @@
 
          //Kriterie for db kobling
         if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {
+
+          // definer verdier fra db 
+        $fornavn = $_POST["fornavn"];
+        $etternavn = $_POST["etternavn"];
+        $epost = $_POST["epost"];
+        $tlf = $_POST["tlf"];
+        $city = $_POST["city"];
+        $zip = $_POST["zip"];
+        $passord = $_POST["passord"];
+        $passordBekreft = $_POST["passordBekreft"];
+
+        if ($passord == $passordBekreft) {
         require_once('../../../private/Database/inc/db_connect.php');
 
         $sql = "INSERT INTO user (fornavn, etternavn, tlf, epost, city, zip, passord) VALUES (:fornavn, :etternavn, :tlf, :epost, :city, :zip, :passord)";  
@@ -92,15 +84,6 @@
         $q->bindParam(':city', $city, PDO::PARAM_STR);
         $q->bindParam(':zip', $zip, PDO::PARAM_STR);
         $q->bindParam(':passord', $passord, PDO::PARAM_STR);
-    
-        // definer verdier fra db 
-        $fornavn = $_POST["fornavn"];
-        $etternavn = $_POST["etternavn"];
-        $epost = $_POST["epost"];
-        $tlf = $_POST["tlf"];
-        $city = $_POST["city"];
-        $zip = $_POST["zip"];
-        $passord = $_POST["passord"];
     
    // feilmeldinger
     try {
@@ -118,6 +101,9 @@
         echo "Data were not inserted into database.";
     }
 
+  } else {
+    echo "Feil med bekrefting av passord!";
+  }
     }
       ?>
     </div>
