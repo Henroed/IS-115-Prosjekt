@@ -56,6 +56,23 @@
           header("Location:hjemmeside.php"); 
             }
 
+        function Cipher($ch, $key) {
+              if (!ctype_alpha($ch))
+              return $ch;
+                
+              $offset = ord(ctype_upper($ch) ? 'A' : 'a');
+              return chr(fmod(((ord($ch) + $key) - $offset), 26) + $offset);
+          }
+    
+        function Krypter($input, $key) {
+              $output = "";
+                
+              $inputArray = str_split($input);
+              foreach ($inputArray as $ch)
+                $output .= Cipher($ch, $key);          
+              return $output;
+          }
+
          //Kriterie for db kobling
         if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {
 
@@ -68,6 +85,8 @@
         $zip = $_POST["zip"];
         $passord = $_POST["passord"];
         $passordBekreft = $_POST["passordBekreft"];
+
+        $cipherPassord = Krypter($passord, 3);
 
         if ($passord == $passordBekreft) {
         require_once('../../../private/Database/inc/db_connect.php');
@@ -83,7 +102,7 @@
         $q->bindParam(':epost', $epost, PDO::PARAM_STR);
         $q->bindParam(':city', $city, PDO::PARAM_STR);
         $q->bindParam(':zip', $zip, PDO::PARAM_STR);
-        $q->bindParam(':passord', $passord, PDO::PARAM_STR);
+        $q->bindParam(':passord', $cipherPassord, PDO::PARAM_STR);
     
    // feilmeldinger
     try {
