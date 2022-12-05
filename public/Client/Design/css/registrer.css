@@ -1,4 +1,4 @@
-/* Brukes av: profile.php, aboutUs.php, forgotPassword.html, registrer.php, changeProfile.php  createEvent.php*/
+/* Brukes av: minProfil.php, omOss.php, forgotPassword.html, registrer.php, glømtPlassord.php, lagEvent.php*/
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -6,8 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
-  
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;   
 }
 
 body{
@@ -20,7 +19,7 @@ body{
   margin-top: 80px;
   background-color: lightblue;
 }
-  
+  /* All tekst */
 .container{
   max-width: 700px;
   background-color: #fff;
@@ -44,6 +43,7 @@ body{
   width: 30px;
   border-radius: 5px;
 }
+/* Tilhører lagEvent.php */
 .content form .user-details{
   display: flex;
   flex-wrap: wrap;

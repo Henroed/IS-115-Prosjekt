@@ -31,21 +31,26 @@
           if(isset($_SESSION['loginVerdi'])) {
               header("Location:hjemmeside.php"); 
                 }
-
+          
+          //Kriterie for db kobling
           if (isset($_POST["loginVerdi"]) && isset($_POST["passord"])) {
 
             $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
 
+            // definere parametere
             $loginVerdi = $_POST['loginVerdi'];
             $passord = $_POST['passord'];
         
+            // hente fra db
             $sql = "SELECT * FROM user WHERE epost='$loginVerdi' AND passord='$passord' OR tlf='$loginVerdi' AND passord='$passord'";
             $result = mysqli_query($conn, $sql);
         
+            // sjekk om skrevne verdier matcher db-verdier
             if ($row = mysqli_fetch_assoc($result)) {
              $_SESSION['loginVerdi'] = $loginVerdi;
              header("Location: hjemmeside.php");
         
+             //feilmelding
             } else {
               echo "Feil Epost, tlf-nummer eller passord!";
             }

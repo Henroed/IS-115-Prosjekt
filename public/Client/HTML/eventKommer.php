@@ -1,4 +1,5 @@
 <?php
+/* Sier hvor mange som kommer på de ulike eventene */
 require_once('../../../private/Database/inc/db_connect.php');
 $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
 
@@ -7,7 +8,7 @@ $sql = "SELECT COUNT(eventID) as resultat FROM myevent WHERE eventID = '$eventID
 
 $result = mysqli_query($conn, $sql);
 $value = mysqli_fetch_assoc($result);
-echo implode($value);
+echo implode($value); // impode gjør om array til string
 
 
 ?>

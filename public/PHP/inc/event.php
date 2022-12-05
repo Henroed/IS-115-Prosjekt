@@ -1,16 +1,17 @@
 <?php 
-
 $result = $conn->query($sql);
-
+                                        // hent fra db
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 
+ // filkobling avhenger av side
     if ($side == "hjemmeside") {
       echo '<form action="eventLike.php" method="POST">';
     } elseif ($side == "mineEvents") {
       echo '<form action="eventFjern.php" method="POST">';
-    }
+    } 
   ?>
+
 <div class="container">
     <div class="content">
       <div class="title">
@@ -37,7 +38,8 @@ if ($result->num_rows > 0) {
 
         <input type="hidden" id="custId" name="eventID" value="<?php echo $row["eventID"] ?>">
       
-        <div class="row button">
+        <!-- Tekst på knapp -->
+        <div class="button">
           <?php if ($side == "hjemmeside") {
           echo '<input type="submit" value="Kommer">';
          } elseif ($side == "mineEvents") {
@@ -45,7 +47,7 @@ if ($result->num_rows > 0) {
          }     
           ?>
         
-      </div> <!-- Slutt row button -->
+      </div> <!-- Slutt button -->
     </div><!--Slutt Content  -->
 </div> <!--Slutt Container  -->
 </form>

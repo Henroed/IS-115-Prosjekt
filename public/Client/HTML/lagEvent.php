@@ -13,7 +13,7 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Event navn</span>
-            <input type="text" name="eventNavn" value="SnikkSnakk" required>
+            <input type="text" name="eventNavn" value="Navn på event" required>
           </div>
           <div class="input-box">
             <span class="details">Event dato</span>
@@ -21,7 +21,7 @@
           </div>
           <div class="input-box">
             <span class="details">Beskrivelse</span>
-            <input type="textarea" rows="4" cols="50" name="beskrivelse" value="Ting tang" required>
+            <input type="textarea" rows="4" cols="50" name="beskrivelse" value="Kort beskrivelse" required>
           </div>
           <div class="input-box">
             <span class="details">Bilde</span>
@@ -33,22 +33,25 @@
       </form>
 
       <?php 
-
+          //Kriterie for db kobling
         if (isset($_POST["eventNavn"]) && isset($_POST["dato"]) && isset($_POST["beskrivelse"])) {
         require_once('../../../private/Database/inc/db_connect.php');
 
+        // hent fra db
         $sql = "INSERT INTO event (eventNavn, dato, beskrivelse) VALUES (:eventNavn, :dato, :beskrivelse)";  
-        
         $q = $pdo->prepare($sql);
-    
+
+          // koble db-navn til parametere, oversett til SQL
         $q->bindParam(':eventNavn', $eventNavn, PDO::PARAM_STR);
         $q->bindParam(':dato', $dato, PDO::PARAM_STR);
         $q->bindParam(':beskrivelse', $beskrivelse, PDO::PARAM_STR);
     
+        // definer verdier fra db 
         $eventNavn = $_POST["eventNavn"];
         $dato = $_POST["dato"];
         $beskrivelse = $_POST["beskrivelse"];
     
+        // feilmeldinger
     try {
         $q->execute();
     exit();

@@ -5,12 +5,14 @@
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
     $profileValue = $_SESSION['loginVerdi'];
 
+    // hent verdier fra db
     $sql = "SELECT fornavn, etternavn, epost, tlf, city, zip, kjønn FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
 
+        // definer verdier fra db
         $fornavn = $row["fornavn"];
         $etternavn = $row["etternavn"];
         $epost = $row["epost"];
@@ -22,7 +24,7 @@
   <div class="container">
     <div class="title">Min profil</div>
     <div class="content">
-      <form action="oppdaterProfil.php" method="POST">
+      <form action="oppdaterProfil.php" method="POST"> <!-- Send bruker til oppdaterProfil.php, send skjema til nettleser -->
         <div class="user-details">
           <div class="input-box">
             <span class="details">

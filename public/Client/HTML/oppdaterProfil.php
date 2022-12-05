@@ -1,5 +1,6 @@
 <?php session_start(); 
 
+// definer verdier fra db
   $fornavn = $_POST["fornavn"];
   $etternavn = $_POST["etternavn"];
   $epost = $_POST["epost"];
@@ -61,11 +62,13 @@
       </form>
 
       <?php
-
+// koble til profil
 $profileValue = $_SESSION['loginVerdi'];
 
+ //Kriterie for db kobling
 if(isset($_POST["passordBekreft"]) && isset($_POST["passord"])){
-
+ 
+  // definer verdier fra db 
     $fornavn = $_POST["fornavn"];
     $etternavn = $_POST["etternavn"];
     $epost = $_POST["epost"];
@@ -75,14 +78,16 @@ if(isset($_POST["passordBekreft"]) && isset($_POST["passord"])){
     $passord = $_POST["passord"];
     $passordBekreft = $_POST["passordBekreft"];
 
+     //Kriterie for db kobling
     if ($passord == $passordBekreft) {
-
     require_once('../../../private/Database/inc/db_connect.php'); 
-  
+
+    // oppdater db
     $sql = "UPDATE user SET Fornavn = :fornavn, Etternavn = :etternavn, Tlf = :tlf, Epost = :epost , city= :city, Zip = :zip, Passord = :passord WHERE Tlf = '$profilVerdi' OR Epost = '$profilVerdi'";
 
     $q = $pdo->prepare($sql);
-    
+
+    // koble db-navn til parametere, oversett til SQL
     $q->bindParam(':fornavn', $fornavn, PDO::PARAM_STR);
     $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
     $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
@@ -91,6 +96,7 @@ if(isset($_POST["passordBekreft"]) && isset($_POST["passord"])){
     $q->bindParam(':zip', $zip, PDO::PARAM_STR);
     $q->bindParam(':passord', $passord, PDO::PARAM_STR);
 
+    // feilmeldinger
     try {
         $q->execute();
         header("Location: minProfil.php");

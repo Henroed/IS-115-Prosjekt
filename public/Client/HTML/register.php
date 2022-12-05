@@ -76,13 +76,15 @@
           header("Location:hjemmeside.php"); 
             }
 
+         //Kriterie for db kobling
         if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {
         require_once('../../../private/Database/inc/db_connect.php');
 
         $sql = "INSERT INTO user (fornavn, etternavn, tlf, epost, city, zip, passord) VALUES (:fornavn, :etternavn, :tlf, :epost, :city, :zip, :passord)";  
         
         $q = $pdo->prepare($sql);
-    
+
+        // koble db-navn til parametere, oversett til SQL
         $q->bindParam(':fornavn', $fornavn, PDO::PARAM_STR);
         $q->bindParam(':etternavn', $etternavn, PDO::PARAM_STR);
         $q->bindParam(':tlf', $tlf, PDO::PARAM_STR);
@@ -91,6 +93,7 @@
         $q->bindParam(':zip', $zip, PDO::PARAM_STR);
         $q->bindParam(':passord', $passord, PDO::PARAM_STR);
     
+        // definer verdier fra db 
         $fornavn = $_POST["fornavn"];
         $etternavn = $_POST["etternavn"];
         $epost = $_POST["epost"];
@@ -99,6 +102,7 @@
         $zip = $_POST["zip"];
         $passord = $_POST["passord"];
     
+   // feilmeldinger
     try {
         $q->execute();
         header("Location: login.php"); /* Redirect browser */
