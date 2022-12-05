@@ -1,3 +1,4 @@
+<body>
 <?php 
 $result = $conn->query($sql);
                                         // hent fra db
@@ -55,7 +56,6 @@ if ($result->num_rows > 0) {
 <?php   
 }
 }
-
 ?>
 </body>
 </html>
