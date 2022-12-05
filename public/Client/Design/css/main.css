@@ -1,4 +1,4 @@
-/* Brukes av: myEvents.php, homepage.php , event.php*/
+/* Brukes av: mineEvents.php, hjemmeside.php , event.php*/
 /**
  * Generic Styling
 */
@@ -33,37 +33,31 @@ body {
   justify-content: center;
   margin-bottom: 20px;
 }
-.tabs label {
-	display: block;
-	padding: 1rem 2rem;
-	margin-right: 0.2rem;
-	cursor: pointer;
-  background: #90CAF9;
-  font-weight: bold;
-  transition: background ease 0.2s;
-}
 
-.tabs input[type="radio"] {
-	display: none;
-}
-.tabs input[type="radio"]:checked + label {
-	background: #fff;
-}
-.tabs input[type="radio"]:checked + label + .tab {
-	display: block;
-}
 
-@media (max-width: 45em) {
-  .tabs .tab,
-  .tabs label {
-    order: initial;
-  }
-  .tabs label {
-    width: 100%;
-    margin-right: 0;
-    margin-top: 0.2rem;
-  }
+form .button{
+  height: 45px;
+  margin: 35px 0;
+  width: 90%;
+  position: relative;
 }
+form .button input{
+  height: 100%;
+  width: 50%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+form .button input:hover{
+ /* transform: scale(0.99); */
+ background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+ }
 
 
 
