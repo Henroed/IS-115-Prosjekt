@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <?php include 'inc/header.php'; ?>
+     <?php include 'inc/header.html'; ?>
   <div class="container">
   <h1>Planlegg ett nytt event </h1>
     <div class="content">
@@ -34,10 +34,6 @@
                 <option value="konferanse">Konferanse</option>
                 <option value="samling">Samling</option>
             </select>
-          </div>
-          <div class="input-box">
-            <span class="details">Bilde</span>
-            <input type="file" name="bilde">
           </div>
           <div class="button">
           <input type="submit" value="Lag event">
@@ -71,6 +67,7 @@
         // feilmeldinger
     try {
         $q->execute();
+        header("Location:hjemmeside.php"); 
     exit();
     } catch (PDOException $e) {
         echo "Error querying database: " . $e->getMessage() . "<br>";

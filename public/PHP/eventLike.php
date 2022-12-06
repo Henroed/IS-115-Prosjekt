@@ -2,7 +2,7 @@
 <?php
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
 
-  require_once('../../../private/Database/inc/db_connect.php');
+  require_once('../../private/Database/inc/db_connect.php');
 
   // hent fra db
   $sql = "INSERT INTO myEvent (eventID, userID) VALUES (:eventID, :userID)";  
@@ -26,7 +26,7 @@
 
 try {
   $q->execute();
-  header("Location: mineEvents.php");
+  header("Location: ../Client/HTML/mineEvents.php");
 exit();
 } catch (PDOException $e) {
   echo "Error querying database: " . $e->getMessage() . "<br>";

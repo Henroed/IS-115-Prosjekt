@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../Design/css/registrer.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include 'inc/header.php'; ?>
+    <?php include 'inc/header.html'; ?>
 
   <?php
         if(!isset($_SESSION['loginVerdi']))

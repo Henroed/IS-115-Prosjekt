@@ -7,9 +7,9 @@ if ($result->num_rows > 0) {
 
  // filkobling avhenger av side
     if ($side == "hjemmeside") {
-      echo '<form action="eventLike.php" method="POST">';
+      echo '<form action="../../PHP/eventLike.php" method="POST">';
     } elseif ($side == "mineEvents") {
-      echo '<form action="eventFjern.php" method="POST">';
+      echo '<form action="../../PHP/eventFjern.php" method="POST">';
     } 
   ?>
 
@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
             <h4>Lokasjon: </h4>
              <?php echo $row["lokasjon"]?>
             <h5>Antall som kommer: </h5> 
-              <?php include 'eventKommer.php' ?>
+              <?php include '../../PHP/eventKommer.php' ?>
         </div><!-- Slutt details -->
       </div> <!-- Slutt row -->
 
