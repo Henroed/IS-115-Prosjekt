@@ -7,7 +7,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'inc/header.php'; ?>
 
-  <?php include "inc/footer.html";
+  <?php
         if(!isset($_SESSION['loginVerdi']))
         {
             header("Location:login.php");  
@@ -33,6 +33,5 @@
       Epost: abc@gmail.com
     </div>
 </div>
-<?php include "inc/footer.html" ?>
 </body>
 </html>

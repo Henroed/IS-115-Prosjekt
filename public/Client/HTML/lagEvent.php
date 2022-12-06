@@ -86,7 +86,7 @@
       ?>
     </div>
   </div>
-  <?php include "inc/footer.html";
+  <?php
         if(!isset($_SESSION['loginVerdi']))
         {
             header("Location:login.php");  

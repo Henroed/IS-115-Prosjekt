@@ -32,5 +32,4 @@
         }
       $conn->close();
     ?>
-  
-<?php include 'inc/footer.html'; ?>   <!-- Hent footer.php -->
+</div>
