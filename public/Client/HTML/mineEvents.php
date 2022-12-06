@@ -34,7 +34,7 @@
         include '../../PHP/inc/event.php';    // hent event.php
 
       } else {
-      $sql = "SELECT event.eventID, event.eventNavn, event.dato, event.beskrivelse, event.lokasjon, event.eventType FROM event 
+        $sql = "SELECT event.eventID, event.eventNavn, event.dato, event.beskrivelse, event.lokasjon, event.eventType FROM event 
                 LEFT JOIN myEvent ON event.eventID=myEvent.eventID WHERE myEvent.userID = '$selectValue' AND event.dato >= CURDATE()";
          include '../../PHP/inc/event.php';   // hent event.php
 

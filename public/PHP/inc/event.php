@@ -1,7 +1,9 @@
 <body>
 <?php 
-$result = $conn->query($sql);
-                                        // hent fra db
+$result = $conn->query($sql); // hent fra db
+
+include '../../PHP/eventKommer.php';
+
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 
@@ -29,7 +31,11 @@ if ($result->num_rows > 0) {
             <h4>Lokasjon: </h4>
              <?php echo $row["lokasjon"]?>
             <h5>Antall som kommer: </h5> 
-              <?php include '../../PHP/eventKommer.php' ?>
+              <?php
+                    $eventID = $row['eventID'];
+                    
+                    echo $antallKommer = kommer($eventID, $conn);
+              ?>
         </div><!-- Slutt details -->
       </div> <!-- Slutt row -->
 
