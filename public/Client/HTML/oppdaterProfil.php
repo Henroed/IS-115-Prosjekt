@@ -63,7 +63,7 @@
 
       <?php
 // koble til profil
-$profileValue = $_SESSION['loginVerdi'];
+$profilVerdi = $_SESSION['loginVerdi'];
 
  //Kriterie for db kobling
 if(isset($_POST["passordBekreft"]) && isset($_POST["passord"])){
