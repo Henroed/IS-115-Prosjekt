@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="no" dir="ltr">
+<html lang="no" dir="ltr">  
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../Design/css/registrer.css">

@@ -14,35 +14,35 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Fornavn</span>
-            <input type="text" name="fornavn" value="Chris" required>
+            <input type="text" name="fornavn" placeholder="Skriv inn fornavnet ditt" required>
           </div>
           <div class="input-box">
             <span class="details">Etternavn</span>
-            <input type="text" name="etternavn" value="Martin">
+            <input type="text" name="etternavn" placeholder="Skriv inn etternavnet ditt">
           </div>
           <div class="input-box">
             <span class="details">Epost</span>
-            <input type="text" name="epost" value="Chris@mail.com" required>
+            <input type="text" name="epost" placeholder="Skriv inn eposten din" required>
           </div>
           <div class="input-box">
             <span class="details">Tlf nummer</span>
-            <input type="text" name="tlf" value="12345678" required>
+            <input type="text" name="tlf" placeholder="Skriv inn telefonnummeret ditt" required>
           </div>
           <div class="input-box">
             <span class="details">By</span>
-            <input type="text" name="city" value="Kristiansand" required>
+            <input type="text" name="city" placeholder="Skriv inn hjembyen din" required>
           </div>
           <div class="input-box">
             <span class="details">Zip-kode</span>
-            <input type="text" name="zip" value="4623" required>
+            <input type="text" name="zip" placeholder="Skriv inn postnummeret til byen" required>
           </div>
           <div class="input-box">
             <span class="details">Passord</span>
-            <input type="text" name="passord" value="dsaoass" placeholder="Skriv inn passord" required>
+            <input type="text" name="passord" placeholder="Skriv inn passord" required>
           </div>
           <div class="input-box">
             <span class="details">Bekreft passord</span> 
-            <input type="text" name="passordBekreft" placeholder="Gjenta ditt passord" required>
+            <input type="text" name="passordBekreft" placeholder="Gjenta passord" required>
           </div>
         </div>
         <div class="button">
@@ -56,22 +56,7 @@
           header("Location:hjemmeside.php"); 
             }
 
-        function Cipher($ch, $key) {
-              if (!ctype_alpha($ch))
-              return $ch;
-                
-              $offset = ord(ctype_upper($ch) ? 'A' : 'a');
-              return chr(fmod(((ord($ch) + $key) - $offset), 26) + $offset);
-          }
-    
-        function Krypter($input, $key) {
-              $output = "";
-                
-              $inputArray = str_split($input);
-              foreach ($inputArray as $ch)
-                $output .= Cipher($ch, $key);          
-              return $output;
-          }
+        require_once('../../PHP/inc/kryptering.php');
 
          //Kriterie for db kobling
         if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {

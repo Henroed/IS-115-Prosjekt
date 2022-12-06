@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 10:55 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Host: localhost:3306
+-- Generation Time: Dec 06, 2022 at 12:41 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,20 +32,20 @@ CREATE TABLE `event` (
   `eventNavn` varchar(128) NOT NULL,
   `dato` date NOT NULL,
   `beskrivelse` varchar(200) NOT NULL,
-  `bilde` blob DEFAULT NULL,
-  `besøkende` int(11) DEFAULT NULL
+  `bilde` blob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`eventID`, `eventNavn`, `dato`, `beskrivelse`, `bilde`, `besøkende`) VALUES
-(1, 'Julebord', '2023-12-20', 'Bli med på julebord sammen med jobben', NULL, NULL),
-(2, 'Nyttårsfest', '2023-11-30', 'Feir nyåret sammen med venner ', NULL, NULL),
-(3, 'Trening', '2023-11-14', 'Bli med på fellestrening og kom i form før jul', NULL, NULL),
-(4, 'Pepperkakebaking', '2023-12-18', 'Ta med eget utstyr og kom i julestemming med julebaking', NULL, NULL),
-(5, 'Fellesmiddag', '2022-12-25', 'Middag med familien først juledsg', NULL, NULL);
+INSERT INTO `event` (`eventID`, `eventNavn`, `dato`, `beskrivelse`, `bilde`) VALUES
+(1, 'SnikkSnakk', '2023-11-09', 'Praesent id lorem elementum, bibendum quam sit amet, pulvinar turpis. Aliquam ornare tortor nisl, at vulputate purus scelerisque dictum. Aenean sed ipsum neque. ', NULL),
+(2, 'Halloween', '2022-10-31', 'knask eller knep. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere, ipsum ut eleifend pulvinar, elit leo vestibulum odio, sed placerat tortor leo nec ex.', NULL),
+(3, 'Eksamen', '2022-12-14', 'Nunc sit amet neque sed libero ornare finibus. Donec euismod odio eget mauris egestas imperdiet. Proin iaculis, augue ac feugiat gravida, velit ligula dictum massa, vitae auctor erat felis eget nisl.', NULL),
+(4, 'Fest hos Daniel', '2022-11-21', 'Cras vitae venenatis nisi. Pellentesque commodo nisi nec arcu rutrum imperdiet. Ut at ipsum eu felis tempus convallis in vel nibh. Donec sed congue neque.', NULL),
+(5, 'Nyttår', '2022-12-31', 'Proin quam massa, semper in lacinia nec, rhoncus eu felis. Sed erat est, varius eu ex sit amet, aliquam vestibulum risus. ', NULL),
+(6, 'Julaften', '2022-12-24', 'Nå er det jul igjen. Mauris accumsan lacus ac libero tristique laoreet. Quisque enim neque, eleifend efficitur mattis ut, aliquet vitae nisl. Maecenas eu efficitur odio. Nullam ac faucibus elit.', NULL);
 
 -- --------------------------------------------------------
 
@@ -64,11 +64,13 @@ CREATE TABLE `myevent` (
 --
 
 INSERT INTO `myevent` (`myEventID`, `eventID`, `userID`) VALUES
-(1, 2, 18),
-(8, 4, 18),
-(10, 2, 21),
-(13, 1, 21),
-(14, 1, 18);
+(11, 1, 26),
+(12, 2, 26),
+(13, 5, 26),
+(15, 1, 18),
+(16, 6, 18),
+(18, 2, 18),
+(19, 3, 18);
 
 -- --------------------------------------------------------
 
@@ -84,17 +86,19 @@ CREATE TABLE `user` (
   `Tlf` varchar(8) NOT NULL,
   `City` varchar(35) NOT NULL,
   `Zip` int(4) NOT NULL,
-  `Passord` varchar(128) NOT NULL,
-  `Kjønn` varchar(6) DEFAULT NULL
+  `Passord` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `Fornavn`, `Etternavn`, `Epost`, `Tlf`, `City`, `Zip`, `Passord`, `Kjønn`) VALUES
-(18, 'Chrissdfsdgsdffdsddsf', 'Martinos', 'Chris@mail.com', '12345678', 'Kristiansandnes', 4623, '1234', 'Mann'),
-(21, 'Hello', 'Games', 'HeGe@mail.com', '87654321', 'Oslo', 4623, '1234', NULL);
+INSERT INTO `user` (`userID`, `Fornavn`, `Etternavn`, `Epost`, `Tlf`, `City`, `Zip`, `Passord`) VALUES
+(18, 'Chris', 'Martinos', 'Chris@mail.com', '12345678', 'Hamar', 2315, 'sdvvrug123'),
+(21, 'Hello', 'Games', 'HeGe@mail.com', '87654321', 'Oslo', 10, 'sdvvrug123'),
+(26, 'Marty', 'Smith', 'MS@mail.com', '11223344', 'Kristiansand', 4623, 'sdvvrug123'),
+(28, 'Daniel', 'Danielsen', 'Dansen@mail.com', '88776655', 'Kristiansand', 4623, 'sdvvrug123'),
+(29, 'John', 'Snow', 'GoT@mail.com', '12345679', 'Kristiansand', 4623, 'ghwwhhuhwsdvvrug');
 
 --
 -- Indexes for dumped tables
@@ -127,19 +131,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `eventID` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `eventID` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `myevent`
 --
 ALTER TABLE `myevent`
-  MODIFY `myEventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `myEventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `userID` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
