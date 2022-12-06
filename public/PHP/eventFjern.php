@@ -1,5 +1,7 @@
-<?php session_start(); ?>
-<?php
+<?php 
+    
+    session_start();
+    
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
 
     // definer verdier fra db

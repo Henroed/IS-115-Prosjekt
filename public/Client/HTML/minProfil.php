@@ -1,7 +1,8 @@
 <?php session_start(); ?>
 <link rel="stylesheet" href="../Design/css/registrer.css">
-<?php include 'inc/header.html'; ?>
 <?php 
+    include 'inc/header.html'; 
+
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
     $profileValue = $_SESSION['loginVerdi'];
 

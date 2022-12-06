@@ -1,5 +1,6 @@
-<?php session_start(); ?>
-<?php
+<?php 
+    session_start(); 
+
     $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
 
   require_once('../../private/Database/inc/db_connect.php');
