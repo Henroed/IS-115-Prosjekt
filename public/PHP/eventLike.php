@@ -32,11 +32,4 @@ exit();
   echo "Error querying database: " . $e->getMessage() . "<br>";
 }
 
-
-if($pdo->lastInsertId() > 0) {
-  echo "Data satt i databasen, identifisert med UID " . $pdo->lastInsertId() . ".";
-} else {
-  echo "Data ikke satt i databasen.";
-}
-
 ?>
