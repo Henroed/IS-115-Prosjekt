@@ -17,7 +17,7 @@
           </div>
           <div class="input-box">
             <span class="details">Event dato</span>
-            <input type="date" name="dato">
+            <input type="date" name="dato" required>
           </div>
           <div class="input-box">
             <span class="details">Beskrivelse</span>
