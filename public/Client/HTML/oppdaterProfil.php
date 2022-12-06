@@ -78,6 +78,10 @@ if(isset($_POST["passordBekreft"]) && isset($_POST["passord"])){
     $passord = $_POST["passord"];
     $passordBekreft = $_POST["passordBekreft"];
 
+    require_once('../../PHP/inc/kryptering.php');
+
+    $cipherPassord = Krypter($passord, 3);
+
      //Kriterie for db kobling
     if ($passord == $passordBekreft) {
     require_once('../../../private/Database/inc/db_connect.php'); 
@@ -94,7 +98,7 @@ if(isset($_POST["passordBekreft"]) && isset($_POST["passord"])){
     $q->bindParam(':epost', $epost, PDO::PARAM_STR);
     $q->bindParam(':city', $city, PDO::PARAM_STR);
     $q->bindParam(':zip', $zip, PDO::PARAM_STR);
-    $q->bindParam(':passord', $passord, PDO::PARAM_STR);
+    $q->bindParam(':passord', $cipherPassord, PDO::PARAM_STR);
 
     // feilmeldinger
     try {
