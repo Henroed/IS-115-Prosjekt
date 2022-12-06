@@ -18,7 +18,7 @@
           </div>
           <div class="input-box">
             <span class="details">Etternavn</span>
-            <input type="text" name="etternavn" placeholder="Skriv inn etternavnet ditt">
+            <input type="text" name="etternavn" placeholder="Skriv inn etternavnet ditt" required>
           </div>
           <div class="input-box">
             <span class="details">Epost</span>
