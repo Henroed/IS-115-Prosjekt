@@ -24,10 +24,10 @@
          echo "Error deleting record: " . $conn->error;
      }
 
-if($pdo->lastInsertId() > 0) {
-  echo "Data satt i databasen, identifisert med UID " . $pdo->lastInsertId() . ".";
-} else {
-  echo "Data ikke satt i databasen.";
-}
+  if($pdo->lastInsertId() > 0) {
+      echo "Data satt i databasen, identifisert med UID " . $pdo->lastInsertId() . ".";
+  } else {
+      echo "Data ikke satt i databasen.";
+  }
 
 ?>

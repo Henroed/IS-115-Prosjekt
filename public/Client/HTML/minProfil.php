@@ -63,9 +63,8 @@
     }
   }
   $conn->close();
-?>
-<?php
-      if(!isset($_SESSION['loginVerdi'])) // If session is not set then redirect to Login Page
+
+  if(!isset($_SESSION['loginVerdi'])) // If session is not set then redirect to Login Page
       {
           header("Location:login.php");  
       }

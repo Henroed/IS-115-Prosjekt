@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../Design/css/registrer.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include 'inc/header.html'; ?>
-
-  <?php
-        if(!isset($_SESSION['loginVerdi']))
-        {
+    <?php include 'inc/header.html'; 
+        
+          if(!isset($_SESSION['loginVerdi'])) {
             header("Location:login.php");  
         }
-  ?>
+    ?>
   <div class="container">
     <div class="title">Om oss</div>
     <div class="content">

@@ -6,9 +6,8 @@
       if(!isset($_SESSION['loginVerdi']))
       {
           header("Location:login.php");  
-      } ?>
-    
-       <?php
+      } 
+      
       // koble til db
       $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
       
