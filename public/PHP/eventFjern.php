@@ -19,7 +19,7 @@
 
   // feilmeldinger
     if ($conn->query($sql) === TRUE) {
-        header("Location: mineEvents.php");
+        header("Location: ../Client/HTML/mineEvents.php");
      } else {
          echo "Error deleting record: " . $conn->error;
      }

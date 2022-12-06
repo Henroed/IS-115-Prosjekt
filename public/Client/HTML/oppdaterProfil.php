@@ -17,7 +17,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <?php include 'inc/header.php'; ?>
+  <?php include 'inc/header.html'; ?>
   <div class="container">
     <div class="title">Registrer</div>
     <div class="content">
