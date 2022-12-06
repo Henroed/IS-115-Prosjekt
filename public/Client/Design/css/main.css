@@ -27,8 +27,8 @@ body {
   padding: 50;
 }
  .content {
-  width: 450px;
-  height: 500px;
+  width: 400px;
+  height: 450px;
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 5px;
@@ -60,3 +60,7 @@ form .button input:hover{
  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
  }
 
+/* filter.php -knapp*/
+ form select{
+ margin-left: 70;
+ }
