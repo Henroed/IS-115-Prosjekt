@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 06, 2022 at 12:41 PM
+-- Generation Time: Dec 06, 2022 at 01:32 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,20 +32,21 @@ CREATE TABLE `event` (
   `eventNavn` varchar(128) NOT NULL,
   `dato` date NOT NULL,
   `beskrivelse` varchar(200) NOT NULL,
-  `bilde` blob DEFAULT NULL
+  `lokasjon` varchar(50) NOT NULL,
+  `eventType` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`eventID`, `eventNavn`, `dato`, `beskrivelse`, `bilde`) VALUES
-(1, 'SnikkSnakk', '2023-11-09', 'Praesent id lorem elementum, bibendum quam sit amet, pulvinar turpis. Aliquam ornare tortor nisl, at vulputate purus scelerisque dictum. Aenean sed ipsum neque. ', NULL),
-(2, 'Halloween', '2022-10-31', 'knask eller knep. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere, ipsum ut eleifend pulvinar, elit leo vestibulum odio, sed placerat tortor leo nec ex.', NULL),
-(3, 'Eksamen', '2022-12-14', 'Nunc sit amet neque sed libero ornare finibus. Donec euismod odio eget mauris egestas imperdiet. Proin iaculis, augue ac feugiat gravida, velit ligula dictum massa, vitae auctor erat felis eget nisl.', NULL),
-(4, 'Fest hos Daniel', '2022-11-21', 'Cras vitae venenatis nisi. Pellentesque commodo nisi nec arcu rutrum imperdiet. Ut at ipsum eu felis tempus convallis in vel nibh. Donec sed congue neque.', NULL),
-(5, 'Nyttår', '2022-12-31', 'Proin quam massa, semper in lacinia nec, rhoncus eu felis. Sed erat est, varius eu ex sit amet, aliquam vestibulum risus. ', NULL),
-(6, 'Julaften', '2022-12-24', 'Nå er det jul igjen. Mauris accumsan lacus ac libero tristique laoreet. Quisque enim neque, eleifend efficitur mattis ut, aliquet vitae nisl. Maecenas eu efficitur odio. Nullam ac faucibus elit.', NULL);
+INSERT INTO `event` (`eventID`, `eventNavn`, `dato`, `beskrivelse`, `lokasjon`, `eventType`) VALUES
+(1, 'SnikkSnakk', '2023-11-09', 'Praesent id lorem elementum, bibendum quam sit amet, pulvinar turpis. Aliquam ornare tortor nisl, at vulputate purus scelerisque dictum. Aenean sed ipsum neque. ', 'Overalt', 'fest'),
+(2, 'Halloween', '2022-10-31', 'knask eller knep. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere, ipsum ut eleifend pulvinar, elit leo vestibulum odio, sed placerat tortor leo nec ex.', 'Rundt Kristiansand', 'samling'),
+(3, 'Eksamen', '2022-12-14', 'Nunc sit amet neque sed libero ornare finibus. Donec euismod odio eget mauris egestas imperdiet. Proin iaculis, augue ac feugiat gravida, velit ligula dictum massa, vitae auctor erat felis eget nisl.', 'UiA', 'konferanse'),
+(4, 'Fest hos Daniel', '2022-11-21', 'Cras vitae venenatis nisi. Pellentesque commodo nisi nec arcu rutrum imperdiet. Ut at ipsum eu felis tempus convallis in vel nibh. Donec sed congue neque.', 'Hos Daniel', 'fest'),
+(5, 'Nyttår', '2022-12-31', 'Proin quam massa, semper in lacinia nec, rhoncus eu felis. Sed erat est, varius eu ex sit amet, aliquam vestibulum risus. ', 'Kristiansand sentrum', 'samling'),
+(6, 'Julaften', '2022-12-24', 'Nå er det jul igjen. Mauris accumsan lacus ac libero tristique laoreet. Quisque enim neque, eleifend efficitur mattis ut, aliquet vitae nisl. Maecenas eu efficitur odio. Nullam ac faucibus elit.', 'Kristiansand sentrum', 'samling');
 
 -- --------------------------------------------------------
 
@@ -131,7 +132,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `eventID` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `eventID` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `myevent`

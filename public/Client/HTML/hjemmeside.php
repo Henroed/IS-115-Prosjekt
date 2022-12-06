@@ -13,9 +13,22 @@
       
       $side = "hjemmeside"; // definer navn på siden
 
+      require_once('inc/filter.html'); 
+
       // hent fra db
-        $sql = "SELECT eventID, eventNavn, dato, beskrivelse FROM event WHERE dato >= CURDATE()";
+        if (isset($_GET['filter'])) {
+          
+          $filter = $_GET["filter"];
+
+          $sql = "SELECT eventID, eventNavn, dato, beskrivelse, lokasjon, eventType FROM event WHERE dato >= CURDATE() AND eventType = '$filter'";
+          include '../../PHP/inc/event.php';    // hent event.php
+
+        } else {
+
+        $sql = "SELECT eventID, eventNavn, dato, beskrivelse, lokasjon, eventType FROM event WHERE dato >= CURDATE()";
         include '../../PHP/inc/event.php';    // hent event.php
+
+        }
       $conn->close();
     ?>
 <?php include 'inc/footer.html'; 
