@@ -98,12 +98,6 @@
         echo "Error querying database: " . $e->getMessage() . "<br>"; // Never do this in production
     }
     //$q->debugDumpParams();
-    
-    if($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
-    } else {
-        echo "Data were not inserted into database.";
-    }
 
   } else {
     echo "Feil med bekrefting av passord!";

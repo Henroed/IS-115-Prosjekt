@@ -11,4 +11,9 @@
         echo 'Error connecting to database: ' . $e->getMessage(); // Never do this in production
     }
 
+    if($pdo->lastInsertId() > 0) {
+        echo "Data satt i databasen, identifisert med UID " . $pdo->lastInsertId() . ".";
+    } else {
+        echo "Data ikke satt i databasen.";
+    }
 ?>

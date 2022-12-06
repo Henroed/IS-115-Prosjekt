@@ -105,12 +105,6 @@ if(isset($_POST["passordBekreft"]) && isset($_POST["passord"])){
         echo "Error querying database: " . $e->getMessage() . "<br>";
     }
     //$q->debugDumpParams();
-    
-    if($pdo->lastInsertId() > 0) {
-        echo "Data inserted into database, identified by UID " . $pdo->lastInsertId() . ".";
-    } else {
-        echo "Data ikke satt i databasen.";
-    }
 
     } else {
       echo "Feil med bekrefting av passord!";
