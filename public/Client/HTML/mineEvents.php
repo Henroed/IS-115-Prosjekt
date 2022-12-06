@@ -22,7 +22,7 @@
 
        $side = "mineEvents";    // definere navn på siden
 
-       require_once('inc/filter.html'); 
+       require_once('inc/filter.html');     // hent filter.php
 
        // hente event i db
        if (isset($_GET['filter'])) {

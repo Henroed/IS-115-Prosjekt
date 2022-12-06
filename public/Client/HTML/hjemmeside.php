@@ -3,7 +3,7 @@
 <?php include 'inc/header.html'; ?>       <!-- Hent header.php -->
 <h1> Hjemmeside </h1>
 <?php
-      if(!isset($_SESSION['loginVerdi']))
+      if(!isset($_SESSION['loginVerdi']))  //uaktiv session/ikke logget inn = sendt til login.php
       {
           header("Location:login.php");  
       } 
