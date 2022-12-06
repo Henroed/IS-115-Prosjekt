@@ -6,8 +6,9 @@
       if(!isset($_SESSION['loginVerdi']))
       {
           header("Location:login.php");  
-      }
-      
+      } ?>
+    
+       <?php
       // koble til db
       $conn = mysqli_connect("localhost", "root", "", "eventdatabase");  
       
@@ -21,12 +22,12 @@
           $filter = $_GET["filter"];
 
           $sql = "SELECT eventID, eventNavn, dato, beskrivelse, lokasjon, eventType FROM event WHERE dato >= CURDATE() AND eventType = '$filter'";
-          include '../../PHP/inc/event.php';    // hent event.php
+          include '../../PHP/inc/event.php';    // hent event.php basert på filter og dato
 
         } else {
 
         $sql = "SELECT eventID, eventNavn, dato, beskrivelse, lokasjon, eventType FROM event WHERE dato >= CURDATE()";
-        include '../../PHP/inc/event.php';    // hent event.php
+        include '../../PHP/inc/event.php';    // hent event.php basert på dato
 
         }
       $conn->close();
