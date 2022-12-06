@@ -20,21 +20,17 @@ if ($result->num_rows > 0) {
       </div>
       <div class="row">
         <div class="details"> 
+            <h4>Event Type: </h4>
+             <?php echo ucfirst($row["eventType"])?><br>
            <h4>Beskrivelse: </h4>
              <?php echo $row["beskrivelse"]?><br>
            <h4>Dato: </h4>
              <?php echo date("d/m/Y", strtotime($row["dato"]))?>
-                <h5>Antall som kommer: </h5> 
-                <?php include 'eventKommer.php' ?>
+            <h4>Lokasjon: </h4>
+             <?php echo $row["lokasjon"]?>
+            <h5>Antall som kommer: </h5> 
+              <?php include 'eventKommer.php' ?>
         </div><!-- Slutt details -->
-     
-          <i class="fas fa-bilde"></i>
-        <img src="../../Client/Design\img\Capture.PNG" width="200" height="200">
-       
-        <?php
-          //your PHP code goes here
-        ?>
-
       </div> <!-- Slutt row -->
 
         <input type="hidden" id="custId" name="eventID" value="<?php echo $row["eventID"] ?>">

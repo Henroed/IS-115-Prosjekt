@@ -53,7 +53,7 @@
           </div>
           <div class="input-box">
             <span class="details">Bekreft passord</span>
-            <input type="text" name="passordBekreft" placeholder="Gjenta ditt passord" required>
+            <input type="text" name="passordBekreft" placeholder="Gjenta passord" required>
           </div>
         </div>
         <div class="button">

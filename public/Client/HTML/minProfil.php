@@ -6,7 +6,7 @@
     $profileValue = $_SESSION['loginVerdi'];
 
     // hent verdier fra db
-    $sql = "SELECT fornavn, etternavn, epost, tlf, city, zip, kjønn FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";
+    $sql = "SELECT fornavn, etternavn, epost, tlf, city, zip FROM user WHERE tlf = '$profileValue' OR epost = '$profileValue'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -19,7 +19,6 @@
         $tlf = $row["tlf"];
         $city = $row["city"];
         $zip = $row["zip"];
-        $kjønn = $row["kjønn"];
 ?>
   <div class="container">
     <div class="title">Min profil</div>
@@ -54,10 +53,6 @@
             <input type="hidden" id="custId" name="zip" value="<?php echo $zip?>">
           </div>
           <div class="input-box">
-          <h5>Kjønn:</h5>
-            <span class="details"><?php echo $kjønn?></span>
-            <input type="hidden" id="custId" name="kjønn" value="<?php echo $kjønn?>">
-          </div>
         <div class="button">
           <input type="submit" value="Endre informasjon">
         </div>

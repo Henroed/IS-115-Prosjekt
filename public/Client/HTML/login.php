@@ -27,10 +27,11 @@
           <div class="signup-link">Ikke et medlem? <a href="register.php">Registrer deg</a></div>
         </form>
         <?php 
-
           if(isset($_SESSION['loginVerdi'])) {
               header("Location:hjemmeside.php"); 
                 }
+          
+          require_once('../../PHP/inc/kryptering.php');
           
           //Kriterie for db kobling
           if (isset($_POST["loginVerdi"]) && isset($_POST["passord"])) {
@@ -40,9 +41,11 @@
             // definere parametere
             $loginVerdi = $_POST['loginVerdi'];
             $passord = $_POST['passord'];
+
+            $cipherPassord = Krypter($passord, 3);
         
             // hente fra db
-            $sql = "SELECT * FROM user WHERE epost='$loginVerdi' AND passord='$passord' OR tlf='$loginVerdi' AND passord='$passord'";
+            $sql = "SELECT * FROM user WHERE epost='$loginVerdi' AND passord='$passord' OR tlf='$loginVerdi' AND passord='$cipherPassord'";
             $result = mysqli_query($conn, $sql);
         
             // sjekk om skrevne verdier matcher db-verdier

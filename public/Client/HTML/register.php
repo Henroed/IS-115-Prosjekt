@@ -14,55 +14,35 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Fornavn</span>
-            <input type="text" name="fornavn" value="Chris" required>
+            <input type="text" name="fornavn" placeholder="Skriv inn fornavnet ditt" required>
           </div>
           <div class="input-box">
             <span class="details">Etternavn</span>
-            <input type="text" name="etternavn" value="Martin">
+            <input type="text" name="etternavn" placeholder="Skriv inn etternavnet ditt">
           </div>
           <div class="input-box">
             <span class="details">Epost</span>
-            <input type="text" name="epost" value="Chris@mail.com" required>
+            <input type="text" name="epost" placeholder="Skriv inn eposten din" required>
           </div>
           <div class="input-box">
             <span class="details">Tlf nummer</span>
-            <input type="text" name="tlf" value="12345678" required>
+            <input type="text" name="tlf" placeholder="Skriv inn telefonnummeret ditt" required>
           </div>
           <div class="input-box">
             <span class="details">By</span>
-            <input type="text" name="city" value="Kristiansand" required>
+            <input type="text" name="city" placeholder="Skriv inn hjembyen din" required>
           </div>
           <div class="input-box">
             <span class="details">Zip-kode</span>
-            <input type="text" name="zip" value="4623" required>
+            <input type="text" name="zip" placeholder="Skriv inn postnummeret til byen" required>
           </div>
           <div class="input-box">
             <span class="details">Passord</span>
-            <input type="text" name="passord" value="dsaoass" placeholder="Skriv inn passord" required>
+            <input type="text" name="passord" placeholder="Skriv inn passord" required>
           </div>
           <div class="input-box">
-            <span class="details">Bekreft passord</span>
-            <input type="text" placeholder="Gjenta ditt passord" >
-          </div>
-        </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
-          <span class="gender-title">Kjønn</span>
-          <div class="category">
-            <label for="dot-1" value="Mann">
-            <span class="dot one"></span>
-            <span class="gender">Mann</span>
-          </label>
-          <label for="dot-2" value="Dame">
-            <span class="dot two"></span>
-            <span class="gender">Dame</span>
-          </label>
-          <label for="dot-3" value="annet">
-            <span class="dot three"></span>
-            <span class="gender">Annet</span>
-            </label>
+            <span class="details">Bekreft passord</span> 
+            <input type="text" name="passordBekreft" placeholder="Gjenta passord" required>
           </div>
         </div>
         <div class="button">
@@ -76,8 +56,24 @@
           header("Location:hjemmeside.php"); 
             }
 
+        require_once('../../PHP/inc/kryptering.php');
+
          //Kriterie for db kobling
         if (isset($_POST["fornavn"]) && isset($_POST["epost"]) && isset($_POST["passord"])) {
+
+          // definer verdier fra db 
+        $fornavn = $_POST["fornavn"];
+        $etternavn = $_POST["etternavn"];
+        $epost = $_POST["epost"];
+        $tlf = $_POST["tlf"];
+        $city = $_POST["city"];
+        $zip = $_POST["zip"];
+        $passord = $_POST["passord"];
+        $passordBekreft = $_POST["passordBekreft"];
+
+        $cipherPassord = Krypter($passord, 3);
+
+        if ($passord == $passordBekreft) {
         require_once('../../../private/Database/inc/db_connect.php');
 
         $sql = "INSERT INTO user (fornavn, etternavn, tlf, epost, city, zip, passord) VALUES (:fornavn, :etternavn, :tlf, :epost, :city, :zip, :passord)";  
@@ -91,16 +87,7 @@
         $q->bindParam(':epost', $epost, PDO::PARAM_STR);
         $q->bindParam(':city', $city, PDO::PARAM_STR);
         $q->bindParam(':zip', $zip, PDO::PARAM_STR);
-        $q->bindParam(':passord', $passord, PDO::PARAM_STR);
-    
-        // definer verdier fra db 
-        $fornavn = $_POST["fornavn"];
-        $etternavn = $_POST["etternavn"];
-        $epost = $_POST["epost"];
-        $tlf = $_POST["tlf"];
-        $city = $_POST["city"];
-        $zip = $_POST["zip"];
-        $passord = $_POST["passord"];
+        $q->bindParam(':passord', $cipherPassord, PDO::PARAM_STR);
     
    // feilmeldinger
     try {
@@ -118,6 +105,9 @@
         echo "Data were not inserted into database.";
     }
 
+  } else {
+    echo "Feil med bekrefting av passord!";
+  }
     }
       ?>
     </div>
