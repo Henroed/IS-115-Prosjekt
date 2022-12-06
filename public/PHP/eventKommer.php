@@ -1,7 +1,7 @@
 <?php
 /* Sier hvor mange som kommer på de ulike eventene */
 
-function kommer($eventID, $conn) {
+function kommer($eventID, $conn) { //$eventID definert i event.php, $conn definert i hjemmeside.php
 
     $sqlKommer = "SELECT COUNT(eventID) as resultat FROM myevent WHERE eventID = '$eventID'";
 

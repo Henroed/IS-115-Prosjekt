@@ -32,9 +32,9 @@ if ($result->num_rows > 0) {
              <?php echo $row["lokasjon"]?>
             <h5>Antall som kommer: </h5> 
               <?php
-                    $eventID = $row['eventID'];
+                    $eventID = $row['eventID']; // Parameter i eventKommer.php
                     
-                    echo $antallKommer = kommer($eventID, $conn);
+                    echo $antallKommer = kommer($eventID, $conn); // Kaller på funksjon i eventKommer.php
               ?>
         </div><!-- Slutt details -->
       </div> <!-- Slutt row -->
